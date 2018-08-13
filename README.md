@@ -1,11 +1,11 @@
 # Backup of my neovim preferences
 
-#### Target installation
+### Target installation
 ```
 ~/.config/nvim/init.vim
 ```
 
-#### Requirements
+### Requirements
 
 Powerline fonts:
 ```
@@ -32,7 +32,7 @@ Run the installation for YouCompleteMe:
 https://github.com/Valloric/YouCompleteMe#installation
 ```
 
-#### Optional
+### Optional
 I run nvim through nvim-qt (avoiding issues with font-rendering/key-bindings that may happen when running through a console application:
 ```
 https://github.com/equalsraf/neovim-qt
