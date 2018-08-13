@@ -2,10 +2,10 @@
 
 #### Target installation
 ```
-~/.config/nvim/init.vim
+cp init.vim ~/.config/nvim/init.vim
 ```
 
-#### Requirements:
+#### Requirements
 
 Neovim:
 ```
@@ -22,7 +22,7 @@ Run the plugins installation inside nvim:
 :PlugInstall
 ```
 
-#### Optional:
+#### Optional
 I run nvim through nvim-qt (avoiding issues with font-rendering/key-bindings that may happen with running through a console application:
 ```
 https://github.com/equalsraf/neovim-qt
