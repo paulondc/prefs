@@ -2,7 +2,7 @@
 
 #### Target installation
 ```
-cp init.vim ~/.config/nvim/init.vim
+~/.config/nvim/init.vim
 ```
 
 #### Requirements
