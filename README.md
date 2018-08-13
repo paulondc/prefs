@@ -27,6 +27,11 @@ Run the plugins installation inside nvim:
 :PlugInstall
 ```
 
+Run the installation for YouCompleteMe:
+```
+https://github.com/Valloric/YouCompleteMe#installation
+```
+
 #### Optional
 I run nvim through nvim-qt (avoiding issues with font-rendering/key-bindings that may happen with running through a console application:
 ```
