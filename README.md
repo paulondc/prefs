@@ -38,7 +38,7 @@ I run nvim through nvim-qt (avoiding issues with font-rendering/key-bindings tha
 https://github.com/equalsraf/neovim-qt
 ```
 
-I use the alias `v` to launch nvim-qt, added to the `~/.bashrc`:
+Also, I use the alias `v` to launch nvim-qt, added to the `~/.bashrc`:
 ```bash
 alias v='nvim-qt'
 ```
