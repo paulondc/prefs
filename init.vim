@@ -56,11 +56,6 @@ Plug 'airblade/vim-gitgutter'
 " Initialize plugin system
 call plug#end()
 
-" Theme
-" colorscheme tender
-" let g:onedark_terminal_italics=0
-" let g:airline_theme='onedark'
-
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
     set termguicolors
