@@ -7,6 +7,11 @@
 
 #### Requirements
 
+Powerline fonts:
+```
+https://github.com/powerline/fonts
+```
+
 Neovim:
 ```
 https://neovim.io
