@@ -36,7 +36,7 @@ https://github.com/Valloric/YouCompleteMe#installation
 ```
 
 ### Optional
-I run nvim through nvim-qt (avoiding issues with font-rendering/key-bindings that may happen when running through a console application:
+I run nvim through nvim-qt (avoiding issues related with font-rendering/key-bindings that may occur when running through a console application:
 ```
 https://github.com/equalsraf/neovim-qt
 ```
