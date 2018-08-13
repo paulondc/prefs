@@ -1,4 +1,7 @@
 # Backup of my neovim preferences
+<p align="center">
+  <img src="data/screenshot.png?v=1"/>
+</p>
 
 ### Target installation
 ```
