@@ -45,3 +45,6 @@ Also, I use the alias `v` to launch nvim-qt, added to the `~/.bashrc`:
 ```bash
 alias v='nvim-qt'
 ```
+
+### Licensing
+vim-prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
