@@ -10,6 +10,7 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
+let g:NERDTreeMinimalUI = 1
 
 " status bar
 " required fonts:
