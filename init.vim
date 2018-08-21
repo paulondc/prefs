@@ -10,7 +10,6 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
-let g:NERDTreeMinimalUI = 1
 
 " status bar
 " required fonts:
@@ -110,9 +109,18 @@ set softtabstop=4   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 
+" Enable spell checking
+" set spell
+
+" Spell checking languages
+set spelllang=en
+
 " traditional tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+" using ESC to leave the insert mode when inside of term
+tnoremap <Esc> <C-\><C-n>
 
 " clear hightlight
 nnoremap <esc><esc> :noh<return>
@@ -144,3 +152,11 @@ function Multiple_cursors_after()
   let g:ycm_filetype_whitelist = s:old_ycm_whitelist
   set foldmethod=syntax
 endfunction
+
+" hide line numbers in term mode
+function! SetNoNumberNoRelativeNumber()
+  set norelativenumber
+  set nonumber
+endfunc
+
+autocmd TermOpen * :call SetNoNumberNoRelativeNumber()
