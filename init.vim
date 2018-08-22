@@ -151,10 +151,11 @@ function Multiple_cursors_after()
   set foldmethod=syntax
 endfunction
 
-" hide line numbers in term mode
-function! SetNoNumberNoRelativeNumber()
+" term: hide line numbers and start in insert mode
+function! TermModeDefauts()
   set norelativenumber
   set nonumber
+  startinsert
 endfunc
 
-autocmd TermOpen * :call SetNoNumberNoRelativeNumber()
+autocmd TermOpen * :call TermModeDefauts()
