@@ -17,7 +17,6 @@ let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 " sudo apt-get install fonts-powerline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-sensible'
@@ -27,6 +26,10 @@ Plug 'tpope/vim-surround'
 Plug 'brooth/far.vim'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 " instructions to install python packages:
 " https://neovim.io/doc/user/provider.html#provider-python
@@ -67,10 +70,6 @@ syntax enable
 
 " colorscheme tender
 colorscheme onedark
-
-let g:lightline = {
-\   'colorscheme': 'one',
-\}
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
