@@ -27,8 +27,6 @@ Plug 'tpope/vim-surround'
 Plug 'brooth/far.vim'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
-" sudo apt-get install autoconf
-Plug 'universal-ctags/ctags'
 
 " instructions to install python packages:
 " https://neovim.io/doc/user/provider.html#provider-python
