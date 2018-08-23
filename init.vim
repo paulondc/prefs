@@ -16,6 +16,7 @@ let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 " https://github.com/powerline/fonts
 " sudo apt-get install fonts-powerline
 Plug 'vim-airline/vim-airline'
+Plug 'kshenoy/vim-signature'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'osyo-manga/vim-over'
