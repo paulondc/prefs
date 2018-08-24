@@ -132,6 +132,9 @@ nnoremap <esc><esc> :noh<return>
 " hitting enter
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
+" jump to a buffer where it is (in another window, another tab) instead of replacing the current buffer
+set switchbuf=useopen,usetab
+
 " nnoremap ,gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <C-Enter> :YcmCompleter GoToDeclaration<CR>
 let g:ycm_goto_buffer_command = 'new-tab'
@@ -139,10 +142,6 @@ let g:ycm_goto_buffer_command = 'new-tab'
 
 " removing the autocomplete preview displayed on top
 set completeopt-=preview
-
-" NERDTree open automatically when launching vim from a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " slow multiple_cursors & YCM
 function Multiple_cursors_before()
@@ -162,5 +161,31 @@ function! TermModeDefauts()
   set nonumber
   startinsert
 endfunc
-
 autocmd TermOpen * :call TermModeDefauts()
+
+" split window to a terminal
+function! SplitWindowToTerm()
+  belowright split
+  term
+endfunc
+nnoremap <C-T> :call SplitWindowToTerm()<CR>
+
+" Background colors for active vs inactive windows
+hi ActiveWindow guibg=#282c34
+hi InactiveWindow guibg=#22262e
+
+" change highlight group of active/inactive windows
+augroup WindowManagement
+  autocmd!
+  autocmd WinNew * call HandleHighlight()
+  autocmd WinLeave * call HandleHighlight()
+  autocmd WinEnter * call HandleHighlight()
+augroup END
+
+function! HandleHighlight()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+endfunction
+
+" NERDTree open automatically when launching vim from a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
