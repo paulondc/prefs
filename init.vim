@@ -118,6 +118,9 @@ set expandtab       " Expand TABs to spaces
 " Spell checking languages
 set spelllang=en
 
+" f1 toggle nerdtree
+nmap <F1> :NERDTreeToggle<CR>
+
 " traditional tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
