@@ -36,6 +36,11 @@ https://github.com/Valloric/YouCompleteMe#installation
 ```
 
 ### Optional
+Map capslock to an additional `esc` by adding the line below to your `~/.profile`:
+```bash
+setxkbmap -option caps:escape
+```
+
 I run nvim through nvim-qt (avoiding issues related with font-rendering/key-bindings that may occur when running through a console application:
 ```
 https://github.com/equalsraf/neovim-qt
