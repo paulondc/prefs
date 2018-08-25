@@ -36,7 +36,7 @@ https://github.com/Valloric/YouCompleteMe#installation
 ```
 
 ### Optional
-Map capslock to an additional `esc` by adding the line below to your `~/.profile`:
+Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook gets in the way when using vim and at same time esc can be hard to reach by doing this it fixes two issues):
 ```bash
 setxkbmap -option caps:escape
 ```
