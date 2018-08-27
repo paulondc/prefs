@@ -170,6 +170,7 @@ autocmd TermOpen * :call TermModeDefauts()
 " split window to a terminal
 function! SplitWindowToTerm()
   belowright split
+  resize -5
   term
 endfunc
 nnoremap <C-T> :call SplitWindowToTerm()<CR>
