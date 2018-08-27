@@ -25,6 +25,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'brooth/far.vim'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
 let g:airline#extensions#tabline#enabled = 1
