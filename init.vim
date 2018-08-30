@@ -28,6 +28,7 @@ Plug 'brooth/far.vim'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
