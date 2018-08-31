@@ -76,6 +76,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " Theme
 syntax enable
 
+" disable folding
+set nofoldenable
+
 " colorscheme tender
 colorscheme onedark
 
