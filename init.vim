@@ -25,6 +25,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'brooth/far.vim'
+Plug 'matze/vim-move'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
@@ -38,6 +39,11 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#buffers_label = ''
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
+
+" move selection
+let g:move_key_modifier = 'C'
+vmap <C-down> <Plug>MoveBlockDown
+vmap <C-up> <Plug>MoveBlockUp
 
 " instructions to install python packages:
 " https://neovim.io/doc/user/provider.html#provider-python
