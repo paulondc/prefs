@@ -109,6 +109,7 @@ set clipboard+=unnamedplus
 let g:ycm_python_binary_path = 'python'
 
 " get rid of trailling white spaces on save
+let g:better_whitespace_guicolor='#263247'
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 
