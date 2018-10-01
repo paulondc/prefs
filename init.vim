@@ -29,6 +29,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'brooth/far.vim'
 Plug 'matze/vim-move'
 Plug 'nikvdp/ejs-syntax'
+Plug 'tpope/vim-commentary'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
