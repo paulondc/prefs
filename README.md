@@ -41,7 +41,7 @@ Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook 
 setxkbmap -option caps:escape
 ```
 
-I run nvim through nvim-qt (avoiding issues related with font-rendering/key-bindings that may occur when running through a console application:
+I run nvim through nvim-qt to avoid potential issues related with font-rendering/key-bindings that may occur when running through a console application:
 ```
 https://github.com/equalsraf/neovim-qt
 ```
