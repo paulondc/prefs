@@ -3,7 +3,6 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
-" NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
