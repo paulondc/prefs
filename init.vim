@@ -3,6 +3,7 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -23,13 +24,26 @@ Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mhinz/vim-signify'
 " vim-sandwich can potentially replace vim-surround, keeping both for now
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
 Plug 'brooth/far.vim'
 Plug 'matze/vim-move'
 Plug 'nikvdp/ejs-syntax'
+Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-commentary'
+
+" syntastic configuration (used by the linters to report issues, similar to w0rp/ale)
+let g:syntastic_python_checkers=['pylama']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#highlight_match = 0
 let g:far#auto_preview = 0
@@ -66,9 +80,6 @@ Plug 'ntpeters/vim-better-whitespace'
 " json
 Plug 'elzr/vim-json'
 
-" git
-Plug 'tpope/vim-fugitive'
-
 " show git diff as column
 Plug 'airblade/vim-gitgutter'
 
@@ -99,6 +110,13 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 
+let g:ale_linters = {
+\   'cpp': ['clangtidy'],
+\}
+
+let g:ycm_confirm_extra_conf = 0
+let g:c_build_dir = getcwd()."/build"
+
 " show line numbers
 set number
 
@@ -128,8 +146,11 @@ set softtabstop=4   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 
-" Enable spell checking
-" set spell
+" white space chars
+set listchars=tab:>·,trail:~,extends:>,precedes:<,space:.
+
+" Enable spell checking (z= to show suggestions)
+set spell
 
 " Spell checking languages
 set spelllang=en
@@ -140,6 +161,9 @@ nmap <F1> :NERDTreeToggle<CR>
 " traditional tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+" comment line
+vmap <S-/> :gc<CR>
 
 " using ESC to leave the insert mode when inside of term
 tnoremap <Esc> <C-\><C-n>
@@ -204,7 +228,7 @@ augroup END
 
 function! HandleHighlight()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
-endfunction
+endfunc
 
 " NERDTree open automatically when launching vim from a directory
 autocmd StdinReadPre * let s:std_in=1
