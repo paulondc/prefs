@@ -45,7 +45,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-let g:far#highlight_match = 0
 let g:far#auto_preview = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -99,6 +98,10 @@ syntax enable
 
 " disable folding
 set nofoldenable
+
+" improving scrolling speed in large files
+set lazyredraw
+set regexpengine=1
 
 " colorscheme tender
 colorscheme onedark
