@@ -181,7 +181,6 @@ set switchbuf=useopen,usetab
 " nnoremap ,gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <C-Enter> :YcmCompleter GoToDeclaration<CR>
 let g:ycm_goto_buffer_command = 'new-tab'
-let g:ycm_goto_buffer_command = 'new-tab'
 
 " removing the autocomplete preview displayed on top
 set completeopt-=preview
