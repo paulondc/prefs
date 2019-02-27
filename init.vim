@@ -165,9 +165,6 @@ nmap <F1> :NERDTreeToggle<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-" comment line
-vmap <S-/> :gc<CR>
-
 " using ESC to leave the insert mode when inside of term
 tnoremap <Esc> <C-\><C-n>
 
