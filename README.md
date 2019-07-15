@@ -20,7 +20,7 @@ Neovim:
 ```
 https://neovim.io
 ```
-> arch linux: pacman -S neovim
+> arch linux: pacman -S neovim python-neovim
 
 Install vim-plug:
 ```
