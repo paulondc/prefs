@@ -14,16 +14,19 @@ Powerline fonts:
 ```
 https://github.com/powerline/fonts
 ```
+> arch linux: pacman -S powerline powerline-fonts
 
 Neovim:
 ```
 https://neovim.io
 ```
+> arch linux: pacman -S neovim
 
 Install vim-plug:
 ```
 https://github.com/junegunn/vim-plug
 ```
+> linux: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 Run the plugins installation inside nvim:
 ```
