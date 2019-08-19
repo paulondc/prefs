@@ -14,13 +14,11 @@ Powerline fonts:
 ```
 https://github.com/powerline/fonts
 ```
-> arch linux: pacman -S powerline powerline-fonts
 
 Neovim:
 ```
 https://neovim.io
 ```
-> arch linux: pacman -S neovim python-neovim
 
 Install vim-plug:
 ```
