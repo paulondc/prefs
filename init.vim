@@ -33,6 +33,8 @@ Plug 'matze/vim-move'
 Plug 'nikvdp/ejs-syntax'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-commentary'
+" sudo apt install postgresql postgresql-contrib
+Plug 'lifepillar/pgsql.vim'
 
 " syntastic configuration (used by the linters to report issues, similar to w0rp/ale)
 let g:syntastic_python_checkers=['pylama']
@@ -43,6 +45,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:sql_type_default = 'pgsql'
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#auto_preview = 0
