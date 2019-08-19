@@ -15,7 +15,7 @@ let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 " status bar
 " required fonts:
 " https://github.com/powerline/fonts
-" sudo apt-get install fonts-powerline
+" sudo apt install fonts-powerline
 Plug 'vim-airline/vim-airline'
 Plug 'kshenoy/vim-signature'
 Plug 'vim-airline/vim-airline-themes'
