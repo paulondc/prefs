@@ -71,7 +71,7 @@ vmap <C-up> <Plug>MoveBlockUp
 " sudo apt install build-essential cmake python-dev python3-dev
 " # add node and npm to PATH in .bashrc
 " cd ~/.local/share/nvim/plugged/youcompleteme
-" ./install.py --clang-completer --js-completer --enable-coverage
+" ./install.py --clang-completer --rust-completer --ts-completer --enable-coverage --clang-tidy
 Plug 'valloric/youcompleteme'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
