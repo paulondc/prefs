@@ -49,7 +49,7 @@ https://github.com/equalsraf/neovim-qt
 
 Also, I use the alias `v` to launch nvim-qt, added to `~/.bashrc`:
 ```bash
-alias v='nvim-qt --no-ext-tabline'
+alias v='nvim-qt --no-ext-tabline --no-ext-popupmenu'
 ```
 
 ### Licence
