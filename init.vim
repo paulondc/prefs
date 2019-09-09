@@ -188,16 +188,24 @@ let g:ycm_goto_buffer_command = 'new-tab'
 " removing the autocomplete preview displayed on top
 set completeopt-=preview
 
-" slow multiple_cursors & YCM
+" disabling plugins during multiple cursors
 function Multiple_cursors_before()
   let s:old_ycm_whitelist = g:ycm_filetype_whitelist
   let g:ycm_filetype_whitelist = {}
+  let g:ale_enabled = 0
   set foldmethod=manual
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
 endfunction
 
 function Multiple_cursors_after()
   let g:ycm_filetype_whitelist = s:old_ycm_whitelist
   set foldmethod=syntax
+  let g:ale_enabled = 1
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
 endfunction
 
 " term: hide line numbers and start in insert mode
