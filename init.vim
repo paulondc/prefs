@@ -24,6 +24,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mhinz/vim-signify'
+Plug 'hjson/vim-hjson'
 " vim-sandwich can potentially replace vim-surround, keeping both for now
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
