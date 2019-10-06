@@ -1,5 +1,4 @@
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
+" specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
@@ -155,9 +154,15 @@ set spelllang=en
 " f1 toggle nerdtree
 nmap <F1> :NERDTreeToggle<CR>
 
+" disabling help in insert mode
+imap <F1> <Nop>
+
 " traditional tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+" disabling ex mode (entering Ex mode. Type visual to go to Normal mode)...
+nnoremap Q <Nop>
 
 " using ESC to leave the insert mode when inside of term
 tnoremap <Esc> <C-\><C-n>
@@ -231,9 +236,9 @@ function! HandleHighlight()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunc
 
-" NERDTree showing automatically when launched vim from a directory
+" NERDTree opens automatically when launching vim from a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-" update title
+" update title (necessary to update nvim-qt window's title)
 set title
