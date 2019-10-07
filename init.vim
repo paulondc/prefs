@@ -33,7 +33,6 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'tpope/vim-commentary'
 " sudo apt install postgresql postgresql-contrib
 Plug 'lifepillar/pgsql.vim'
-
 let g:sql_type_default = 'pgsql'
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
