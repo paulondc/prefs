@@ -100,6 +100,8 @@ colorscheme onedark
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>'
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
