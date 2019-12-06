@@ -14,6 +14,7 @@ let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 " required fonts:
 " https://github.com/powerline/fonts
 " sudo apt install fonts-powerline
+Plug 'wincent/ferret'
 Plug 'vim-airline/vim-airline'
 Plug 'kshenoy/vim-signature'
 Plug 'vim-airline/vim-airline-themes'
@@ -47,11 +48,17 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#buffers_label = ''
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " move selection
 let g:move_key_modifier = 'C'
 vmap <C-down> <Plug>MoveBlockDown
 vmap <C-up> <Plug>MoveBlockUp
+
+" vim commentary
+" on linux pressing <C-/> registers as <C-_>
+nmap <C-_> <Plug>Commentary
+vmap <C-_> <Plug>Commentary
 
 " instructions to install python packages:
 " https://neovim.io/doc/user/provider.html#provider-python
