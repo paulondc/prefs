@@ -56,7 +56,7 @@ vmap <C-down> <Plug>MoveBlockDown
 vmap <C-up> <Plug>MoveBlockUp
 
 " vim commentary
-" on linux pressing <C-/> registers as <C-_>
+" neovim on linux pressing <C-/> registers as <C-_>
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
