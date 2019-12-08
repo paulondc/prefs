@@ -5,6 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 't9md/vim-quickhl'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeShowHidden = 1
@@ -59,6 +60,9 @@ vmap <C-up> <Plug>MoveBlockUp
 " neovim on linux pressing <C-/> registers as <C-_>
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
+
+" highlight specific words using different colors
+nmap <C-M> <Plug>(quickhl-manual-this) 
 
 " instructions to install python packages:
 " https://neovim.io/doc/user/provider.html#provider-python
