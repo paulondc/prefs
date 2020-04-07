@@ -71,7 +71,7 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-I use the alias `v` to launch nvim-qt, added to `~/.bashrc`:
+I use the alias `v` to launch nvim, added to `~/.bashrc`:
 ```bash
 alias v='nvim'
 ```
