@@ -71,11 +71,6 @@ Install font `JetBrains Mono`:
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-I run nvim through nvim-qt to avoid potential issues related with font-rendering/key-bindings that may occur when running through a console application:
-```
-https://github.com/equalsraf/neovim-qt
-```
-
 Also, I use the alias `v` to launch nvim-qt, added to `~/.bashrc`:
 ```bash
 alias v='nvim-qt --no-ext-tabline --no-ext-popupmenu'
