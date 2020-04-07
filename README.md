@@ -42,6 +42,11 @@ Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook 
 setxkbmap -option caps:escape
 ```
 
+Install font `JetBrains Mono`:
+```
+https://www.jetbrains.com/lp/mono/#design
+```
+
 Install Kitty
 ```
 https://github.com/kovidgoyal/kitty
@@ -64,11 +69,6 @@ active_tab_background #eee
 
 map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
-```
-
-Install font `JetBrains Mono`:
-```
-https://www.jetbrains.com/lp/mono/#design
 ```
 
 Also, I use the alias `v` to launch nvim-qt, added to `~/.bashrc`:
