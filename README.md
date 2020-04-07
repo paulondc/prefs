@@ -66,14 +66,14 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
-```bash
-setxkbmap -option caps:escape
-```
-
 I use the alias `v` to launch nvim, added to `~/.bashrc`:
 ```bash
 alias v='nvim'
+```
+
+Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
+```bash
+setxkbmap -option caps:escape
 ```
 
 ### Licence
