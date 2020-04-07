@@ -42,6 +42,30 @@ Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook 
 setxkbmap -option caps:escape
 ```
 
+Install Kitty
+```
+https://github.com/kovidgoyal/kitty
+```
+
+Add the config to kitty `~/config/kitty` (`ctrl + shift + F2`):
+```
+include ./theme.conf
+
+font_family      JetBrains Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        11.0
+
+enable_audio_bell no
+draw_minimal_borders yes
+tab_bar_style separator
+active_tab_background #eee
+
+map shift+enter send_text all \x1b[13;2u
+map ctrl+enter send_text all \x1b[13;5u
+```
+
 Install font `JetBrains Mono`:
 ```
 https://www.jetbrains.com/lp/mono/#design
