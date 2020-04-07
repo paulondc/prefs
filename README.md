@@ -47,12 +47,12 @@ Install font `JetBrains Mono`:
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-Install Kitty
+Install `Kitty`
 ```
 https://github.com/kovidgoyal/kitty
 ```
 
-Add the config to kitty `~/config/kitty` (`ctrl + shift + F2`):
+Add the config to kitty `~/.config/kitty` (`ctrl + shift + F2`):
 ```
 include ./theme.conf
 
