@@ -47,6 +47,11 @@ Install `Kitty`
 https://github.com/kovidgoyal/kitty
 ```
 
+Install `Kitty themes`
+```
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+```
+
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./theme.conf
