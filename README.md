@@ -47,7 +47,7 @@ Install `Kitty`:
 https://github.com/kovidgoyal/kitty
 ```
 
-Install `Kitty themes`:
+Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
 ```
 https://github.com/dexpota/kitty-themes
 ```
