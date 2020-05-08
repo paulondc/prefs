@@ -42,12 +42,12 @@ Install font `JetBrains Mono`:
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-Install `Kitty`
+Install `Kitty`:
 ```
 https://github.com/kovidgoyal/kitty
 ```
 
-Install `Kitty themes`
+Install `Kitty themes`:
 ```
 git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 ```
