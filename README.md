@@ -54,7 +54,7 @@ https://github.com/dexpota/kitty-themes
 
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
-include ./theme.conf
+include ./kitty-themes/themes/Galaxy.conf
 
 font_family      JetBrains Mono
 bold_font        auto
