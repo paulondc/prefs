@@ -49,7 +49,7 @@ https://github.com/kovidgoyal/kitty
 
 Install `Kitty themes`:
 ```
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+https://github.com/dexpota/kitty-themes
 ```
 
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
