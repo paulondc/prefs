@@ -47,7 +47,7 @@ Install `Kitty`
 https://github.com/kovidgoyal/kitty
 ```
 
-Add the config to kitty `~/.config/kitty` (`ctrl + shift + F2`):
+Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./theme.conf
 
