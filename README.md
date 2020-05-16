@@ -31,7 +31,7 @@ Run the plugins installation inside nvim:
 :PlugInstall
 ```
 
-Run the installation for YouCompleteMe (`python3 ~/.local/share/nvim/plugged/youcompleteme/install.py`):
+Run the installation for YouCompleteMe (`python3 ~/.local/share/nvim/plugged/youcompleteme/install.py --all`):
 ```
 https://github.com/Valloric/YouCompleteMe#installation
 ```
