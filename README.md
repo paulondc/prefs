@@ -34,6 +34,9 @@ Run the plugins installation inside nvim:
 Run the installation for YouCompleteMe (`python3 ~/.local/share/nvim/plugged/youcompleteme/install.py --all`):
 ```
 https://github.com/Valloric/YouCompleteMe#installation
+
+* YCM-Generator needs to be patched (~/.local/share/nvim/plugged/YCM-Generator/config_gen.py):
+https://github.com/rdnetto/YCM-Generator/issues/119#issuecomment-464622499
 ```
 
 ### Optional
