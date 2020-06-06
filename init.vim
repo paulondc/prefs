@@ -8,6 +8,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 't9md/vim-quickhl'
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 
