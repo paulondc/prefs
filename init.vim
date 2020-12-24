@@ -75,10 +75,12 @@ vmap <C-_> <Plug>Commentary
 " # add plug to nvim (~/.config/nvim/init.vim), run PlugInstall:
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
-" # run commands below in vim
+" # run the commands below in vim:
 " CocInstall coc-json coc-tsserver
+"
 " # rust auto-complete support
 " CocInstall coc-rust-analyzer
+"
 " # python auto-complete support
 " CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
