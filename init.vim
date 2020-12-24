@@ -5,11 +5,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 't9md/vim-quickhl'
+
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
-let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 
 " status bar
@@ -25,6 +25,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'mhinz/vim-signify'
 Plug 'hjson/vim-hjson'
 " vim-sandwich can potentially replace vim-surround, keeping both for now
@@ -37,8 +38,6 @@ Plug 'tpope/vim-commentary'
 " sudo apt install postgresql postgresql-contrib
 Plug 'lifepillar/pgsql.vim'
 let g:sql_type_default = 'pgsql'
-
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 let g:far#auto_preview = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -52,6 +51,9 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" ctrl+p ignore
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|__pycache__|build|target|htmlcov|dist)|(\.(swp|ico|git|pyc))$'
+
 " move selection
 let g:move_key_modifier = 'C'
 vmap <C-down> <Plug>MoveBlockDown
@@ -62,20 +64,32 @@ vmap <C-up> <Plug>MoveBlockUp
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
-" highlight specific words using different colors
-nmap <C-M> <Plug>(quickhl-manual-this) 
+" coc used for auto-complete
+"
+" # (rust) install racer:
+" cargo +nightly install racer
+"
+" # (rust) add rust source code
+" rustup component add rust-src
+"
+" # add plug to nvim (~/.config/nvim/init.vim), run PlugInstall:
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+" # run commands below in vim
+" CocInstall coc-json coc-tsserver
+" # rust auto-complete support
+" CocInstall coc-rust-analyzer
+" # python auto-complete support
+" CocInstall coc-pyright
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " instructions to install python packages:
-" https://neovim.io/doc/user/provider.html#provider-python
-" pip2 install --user --upgrade neovim
-" sudo apt install build-essential cmake python-dev python3-dev
-" # add node and npm to PATH in .bashrc
-" cd ~/.local/share/nvim/plugged/youcompleteme
-" ./install.py --clang-completer --rust-completer --ts-completer --enable-coverage --clang-tidy
-Plug 'valloric/youcompleteme'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
+" TODO: need to have a way to disable auto-pairs when the next character
+" is not endl
 Plug 'ap/vim-css-color'
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -106,8 +120,8 @@ set nofoldenable
 set lazyredraw
 set regexpengine=1
 
-" colorscheme tender
-colorscheme onedark
+" colorscheme onedark
+colorscheme deus
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -123,6 +137,11 @@ let g:ale_linters = {
 \   'python': ['pylama'],
 \}
 
+let g:ctrlp_prompt_mappings = {
+\   'AcceptSelection("e")': ['<2-LeftMouse>'],
+\   'AcceptSelection("t")': ['<cr>'],
+\}
+
 let g:ycm_confirm_extra_conf = 0
 let g:c_build_dir = getcwd()."/build"
 
@@ -136,7 +155,7 @@ set scrolloff=5
 set clipboard+=unnamedplus
 
 " code completing using custom python interpreter (looking under the PATH)
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = 'python3'
 
 " get rid of trailling white spaces on save
 let g:better_whitespace_guicolor='#263247'
@@ -183,15 +202,12 @@ tnoremap <Esc> <C-\><C-n>
 " clear hightlight
 nnoremap <esc><esc> :noh<return>
 
-" making sure the option inside of the popup of youcompleteme can be selected
-" hitting enter
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-
 " jump to a buffer where it is (in another window, another tab) instead of replacing the current buffer
 set switchbuf=useopen,usetab
 
 " nnoremap ,gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <C-Enter> :YcmCompleter GoToDeclaration<CR>
+nnoremap <C-Enter> :YcmCompleter GoTo<CR>
 let g:ycm_goto_buffer_command = 'new-tab'
 
 " removing the autocomplete preview displayed on top
@@ -234,8 +250,8 @@ endfunc
 nnoremap <C-T> :call SplitWindowToTerm()<CR>
 
 " Background colors for active vs inactive windows
-hi ActiveWindow guibg=#282c34
-hi InactiveWindow guibg=#22262e
+"hi ActiveWindow guibg=#282c34
+"hi InactiveWindow guibg=#22262e
 
 " change highlight group of active/inactive windows
 augroup WindowManagement
@@ -258,3 +274,20 @@ autocmd bufenter * if (winnr("$") == 1 && tabpagenr() > 1 && exists("b:NERDTree"
 
 " update title (necessary to update nvim-qt window's title)
 set title
+
+" scroll documentation in coc autocomplete
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
