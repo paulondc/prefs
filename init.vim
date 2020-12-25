@@ -65,10 +65,10 @@ nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
 " Coc requirements:
-" # (rust dependency) install racer in the system:
+" # (rust dependency) install racer to the system:
 " cargo +nightly install racer
 "
-" # (rust dependency) add rust source code in the system:
+" # (rust dependency) add rust source code to the system:
 " rustup component add rust-src
 "
 " # manual install:
