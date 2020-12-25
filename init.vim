@@ -64,24 +64,19 @@ vmap <C-up> <Plug>MoveBlockUp
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
-" coc used for auto-complete
-"
-" # (rust) install racer:
-" cargo +nightly install racer
-"
-" # (rust) add rust source code
-" rustup component add rust-src
-"
-" # add plug to nvim (~/.config/nvim/init.vim), run PlugInstall:
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-" # run the commands below in vim:
+" # install tserver by running the command in nvim:
 " CocInstall coc-json coc-tsserver
 "
-" # rust auto-complete support
+" # (rust dependency) install racer in the system:
+" cargo +nightly install racer
+"
+" # (rust dependency) add rust source code in the system:
+" rustup component add rust-src
+"
+" # install rust autocomplete support by running the command in nvim:
 " CocInstall coc-rust-analyzer
 "
-" # python auto-complete support
+" # install python autocomplete support by running the command in nvim:
 " CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
