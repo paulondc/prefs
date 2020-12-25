@@ -69,7 +69,6 @@ vmap <C-_> <Plug>Commentary
 " cargo +nightly install racer
 "
 " # (rust dependency) add rust source code in the system:
-"
 " rustup component add rust-src
 "
 " # manual install:
