@@ -31,9 +31,22 @@ Run the plugins installation inside nvim:
 :PlugInstall
 ```
 
-Run the installation for YouCompleteMe (`python3 ~/.local/share/nvim/plugged/youcompleteme/install.py --all`):
+Run coc installs (autocomplete support):
 ```
-https://github.com/Valloric/YouCompleteMe#installation
+# install tserver by running the command in nvim:
+CocInstall coc-json coc-tsserver
+
+# (rust dependency) install racer in the system:
+cargo +nightly install racer
+
+# (rust dependency) add rust source code in the system:
+rustup component add rust-src
+
+# install rust autocomplete support by running the command in nvim:
+CocInstall coc-rust-analyzer
+
+# install python autocomplete support by running the command in nvim:
+CocInstall coc-pyright
 ```
 
 YCM-Generator needs to be patched (`~/.local/share/nvim/plugged/YCM-Generator/config_gen.py`):
