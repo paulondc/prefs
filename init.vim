@@ -202,10 +202,11 @@ nnoremap <esc><esc> :noh<return>
 " jump to a buffer where it is (in another window, another tab) instead of replacing the current buffer
 set switchbuf=useopen,usetab
 
-" nnoremap ,gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <C-Enter> :YcmCompleter GoToDeclaration<CR>
-nnoremap <C-Enter> :YcmCompleter GoTo<CR>
-let g:ycm_goto_buffer_command = 'new-tab'
+" navigate in the definitions
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " removing the autocomplete preview displayed on top
 set completeopt-=preview
