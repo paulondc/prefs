@@ -80,7 +80,6 @@ vmap <C-_> <Plug>Commentary
 " CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" instructions to install python packages:
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
@@ -139,7 +138,7 @@ let g:ctrlp_prompt_mappings = {
 \   'AcceptSelection("t")': ['<cr>'],
 \}
 
-let g:ycm_confirm_extra_conf = 0
+" ale
 let g:c_build_dir = getcwd()."/build"
 
 " show line numbers
@@ -150,9 +149,6 @@ set scrolloff=5
 
 " clipboard
 set clipboard+=unnamedplus
-
-" code completing using custom python interpreter (looking under the PATH)
-let g:ycm_python_binary_path = 'python3'
 
 " get rid of trailling white spaces on save
 let g:better_whitespace_guicolor='#263247'
@@ -213,8 +209,6 @@ set completeopt-=preview
 
 " disabling plugins during multiple cursors
 function Multiple_cursors_before()
-  let s:old_ycm_whitelist = g:ycm_filetype_whitelist
-  let g:ycm_filetype_whitelist = {}
   let g:ale_enabled = 0
   set foldmethod=manual
   if exists(':NeoCompleteLock')==2
@@ -223,7 +217,6 @@ function Multiple_cursors_before()
 endfunction
 
 function Multiple_cursors_after()
-  let g:ycm_filetype_whitelist = s:old_ycm_whitelist
   set foldmethod=syntax
   let g:ale_enabled = 1
   if exists(':NeoCompleteUnlock')==2
