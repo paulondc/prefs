@@ -80,7 +80,6 @@ vmap <C-_> <Plug>Commentary
 " CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
