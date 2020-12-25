@@ -31,30 +31,16 @@ Run the plugins installation inside nvim:
 :PlugInstall
 ```
 
-Run coc installs (autocomplete support):
+Run coc requirements (autocomplete support):
 ```
-# install tserver by running the command in nvim:
-CocInstall coc-json coc-tsserver
-
-# install auto pairs by running the command in nvim:
-CocInstall coc-pairs
-
 # (rust dependency) install racer in the system:
 cargo +nightly install racer
 
 # (rust dependency) add rust source code in the system:
 rustup component add rust-src
 
-# install rust autocomplete support by running the command in nvim:
-CocInstall coc-rust-analyzer
-
-# install python autocomplete support by running the command in nvim (require nodejs 12+):
-CocInstall coc-pyright
-```
-
-YCM-Generator needs to be patched (`~/.local/share/nvim/plugged/YCM-Generator/config_gen.py`):
-```
-https://github.com/rdnetto/YCM-Generator/issues/119#issuecomment-464622499
+# manual install (skip it):
+CocInstall coc-json coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
 ```
 
 ### Optional
