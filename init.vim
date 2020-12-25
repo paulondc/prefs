@@ -86,7 +86,7 @@ function! InitializeCoc()
   \ ])
 endfunction
 
-Plug 'neoclide/coc.nvim', { 'do': { -> InitializeCoc() } }
+plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> initializecoc() } }
 
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
