@@ -75,15 +75,18 @@ vmap <C-_> <Plug>Commentary
 " CocInstall coc-json coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
 "
 " automatic install:
-let g:coc_global_extensions = [
-\ 'coc-json',
-\ 'coc-tsserver',
-\ 'coc-pairs',
-\ 'coc-rust-analyzer',
-\ 'coc-pyright'
-\ ]
+function! InitializeCoc()
+  call coc#util#install()
+  call coc#util#install_extensions([
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-pairs',
+  \ 'coc-rust-analyzer',
+  \ 'coc-pyright'
+  \ ])
+endfunction
 
-Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
+Plug 'neoclide/coc.nvim', { 'do': { -> InitializeCoc() } }
 
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
