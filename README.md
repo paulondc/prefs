@@ -38,9 +38,6 @@ cargo +nightly install racer
 
 # (rust dependency) add rust source code in the system:
 rustup component add rust-src
-
-# manual install (skip it):
-CocInstall coc-json coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
 ```
 
 ### Optional
