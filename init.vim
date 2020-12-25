@@ -64,25 +64,31 @@ vmap <C-up> <Plug>MoveBlockUp
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
-" # install tserver by running the command in nvim:
-" CocInstall coc-json coc-tsserver
-"
+" Coc requirements:
 " # (rust dependency) install racer in the system:
 " cargo +nightly install racer
 "
 " # (rust dependency) add rust source code in the system:
+"
 " rustup component add rust-src
 "
-" # install rust autocomplete support by running the command in nvim:
-" CocInstall coc-rust-analyzer
+" # manual install:
+" CocInstall coc-json coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
 "
-" # install python autocomplete support by running the command in nvim (require nodejs 12+):
-" CocInstall coc-pyright
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" automatic install:
+let g:coc_global_extensions = [
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-pairs',
+\ 'coc-rust-analyzer',
+\ 'coc-pyright'
+\ ]
+
+Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'jiangmiao/auto-pairs'
+
 " TODO: need to have a way to disable auto-pairs when the next character
 " is not endl
 Plug 'ap/vim-css-color'
