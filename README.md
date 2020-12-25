@@ -36,6 +36,9 @@ Run coc installs (autocomplete support):
 # install tserver by running the command in nvim:
 CocInstall coc-json coc-tsserver
 
+# install auto pairs by running the command in nvim:
+CocInstall coc-pairs
+
 # (rust dependency) install racer in the system:
 cargo +nightly install racer
 
