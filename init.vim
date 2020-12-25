@@ -76,7 +76,7 @@ vmap <C-_> <Plug>Commentary
 " # install rust autocomplete support by running the command in nvim:
 " CocInstall coc-rust-analyzer
 "
-" # install python autocomplete support by running the command in nvim:
+" # install python autocomplete support by running the command in nvim (require nodejs 12+):
 " CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
