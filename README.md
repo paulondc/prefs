@@ -77,6 +77,12 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
+Make Kitty the default xterminal:
+```bash
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
+sudo update-alternatives --config x-terminal-emulator
+```
+
 I use the alias `v` to launch nvim, added to `~/.bashrc`:
 ```bash
 alias v='nvim'
