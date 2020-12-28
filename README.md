@@ -20,18 +20,7 @@ Neovim:
 https://neovim.io
 ```
 
-Install vim-plug:
-```
-https://github.com/junegunn/vim-plug
-```
-> linux: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-Run the plugins installation inside nvim:
-```
-:PlugInstall
-```
-
-Run coc requirements (autocomplete support):
+#### Run coc requirements (autocomplete support):
 ```
 # (python) make sure nodejs 12+ is available in the PATH
 
@@ -42,23 +31,34 @@ cargo +nightly install racer
 rustup component add rust-src
 ```
 
+#### Install vim-plug:
+```
+https://github.com/junegunn/vim-plug
+```
+> linux: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+Run the plugins installation inside nvim:
+```
+:PlugInstall
+```
+
 ### Optional
-Install font `JetBrains Mono`:
+####  Install font `JetBrains Mono`:
 ```
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-Install `Kitty`:
+####  Install `Kitty`:
 ```
 https://github.com/kovidgoyal/kitty
 ```
 
-Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
+####  Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
 ```
 https://github.com/dexpota/kitty-themes
 ```
 
-Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
+#### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./kitty-themes/themes/Galaxy.conf
 
@@ -77,7 +77,7 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-Make Kitty the default xterminal:
+#### Make Kitty the default xterminal:
 ```bash
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
 sudo update-alternatives --config x-terminal-emulator
@@ -88,7 +88,7 @@ I use the alias `v` to launch nvim, added to `~/.bashrc`:
 alias v='nvim'
 ```
 
-Bashrc defaults (`~/.bashrc`): 
+#### Bashrc defaults (`~/.bashrc`):
 ```
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
@@ -98,7 +98,7 @@ HISTFILESIZE=200000
 export PYTHONDONTWRITEBYTECODE=1
 ```
 
-Inputrc defaults (`~/.inputrc`):
+#### Inputrc defaults (`~/.inputrc`):
 ```
 # arrow up/down to auto-complete based on the history
 "\e[A":history-search-backward
@@ -113,7 +113,8 @@ Inputrc defaults (`~/.inputrc`):
 "\e\e[D": backward-word
 ```
 
-Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
+#### Map `capslock` to `esc`:
+Add the line below to the `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
 ```bash
 setxkbmap -option caps:escape
 ```
