@@ -33,10 +33,12 @@ Run the plugins installation inside nvim:
 
 Run coc requirements (autocomplete support):
 ```
-# (rust dependency) install racer to the system:
+# (python) install nodejs 12+
+
+# (rust) install racer to the system:
 cargo +nightly install racer
 
-# (rust dependency) add rust source code to the system:
+# (rust) add rust source code to the system:
 rustup component add rust-src
 ```
 
