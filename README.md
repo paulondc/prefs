@@ -31,6 +31,11 @@ rustup component add rust-src
 sudo apt install postgresql postgresql-contrib
 ```
 
+It might be handy to have `libpg-dev` installed on the:
+```
+sudo apt-get install libpq-dev
+```
+
 #### Install Neovim:
 ```
 https://neovim.io
