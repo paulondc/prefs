@@ -92,7 +92,7 @@ HISTFILESIZE=200000
 # using 'v' to call vim
 alias v='nvim'
 
-# avoiding to create python's pyc|__pycache__ during the dev environment.
+# avoiding to create python's pyc|__pycache__ during the dev environment
 export PYTHONDONTWRITEBYTECODE=1
 ```
 
