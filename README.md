@@ -10,17 +10,12 @@
 
 ### Requirements
 
-Powerline fonts:
+#### Install Powerline fonts:
 ```
 https://github.com/powerline/fonts
 ```
 
-Neovim:
-```
-https://neovim.io
-```
-
-#### Run coc requirements (autocomplete support):
+#### Install coc requirements (autocomplete support):
 ```
 # (python) make sure nodejs 12+ is available in the PATH
 
@@ -29,6 +24,11 @@ cargo +nightly install racer
 
 # (rust) add rust source code to the system:
 rustup component add rust-src
+```
+
+#### Install Neovim:
+```
+https://neovim.io
 ```
 
 #### Install vim-plug:
