@@ -33,7 +33,7 @@ Run the plugins installation inside nvim:
 
 Run coc requirements (autocomplete support):
 ```
-# (python) install nodejs 12+
+# (python) make sure nodejs 12+ is available in the PATH
 
 # (rust) install racer to the system:
 cargo +nightly install racer
@@ -56,6 +56,16 @@ https://github.com/kovidgoyal/kitty
 Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
 ```
 https://github.com/dexpota/kitty-themes
+```
+
+Bashrc defaults (`~/.bashrc`): 
+```
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# nope.
+export PYTHONDONTWRITEBYTECODE=1
 ```
 
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
