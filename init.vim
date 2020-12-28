@@ -74,12 +74,14 @@ vmap <C-_> <Plug>Commentary
 " rustup component add rust-src
 "
 " # manual install:
-" CocInstall coc-json coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
+" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
 "
 " automatic install:
 let g:coc_global_extensions = [
 \ 'coc-json',
+\ 'coc-yaml',
 \ 'coc-tsserver',
+\ 'coc-sh',
 \ 'coc-pairs',
 \ 'coc-rust-analyzer',
 \ 'coc-pyright',
