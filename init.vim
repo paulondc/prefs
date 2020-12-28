@@ -65,7 +65,7 @@ nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
 " Coc requirements:
-" # (python) install nodejs 12+
+" # (python) make sure nodejs 12+ is available in the PATH
 "
 " # (rust) install racer to the system:
 " cargo +nightly install racer
