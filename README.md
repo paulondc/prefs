@@ -31,9 +31,14 @@ rustup component add rust-src
 sudo apt install postgresql postgresql-contrib
 ```
 
-It might be handy to have `libpg-dev` and `libsqlite3-dev` installed in the system:
+Alos, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on the system:
 ```
 sudo apt-get install libpq-dev libsqlite3-dev
+```
+
+#### Install debuggers:
+```
+sudo apt-get install lldb gdb
 ```
 
 #### Install Neovim:
