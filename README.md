@@ -15,7 +15,7 @@
 https://github.com/powerline/fonts
 ```
 
-#### Install coc requirements (autocomplete support):
+#### Install system requirements for coc (autocomplete support in vim):
 ```
 # (python) make sure nodejs 12+ is available in the PATH
 
@@ -83,16 +83,14 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-I use the alias `v` to launch nvim, added to `~/.bashrc`:
-```bash
-alias v='nvim'
-```
-
 #### Bashrc defaults (`~/.bashrc`):
 ```
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=200000
+
+# using 'v' to call vim
+alias v='nvim'
 
 # avoiding to create python's pyc|__pycache__ during the dev environment.
 export PYTHONDONTWRITEBYTECODE=1
