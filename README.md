@@ -26,6 +26,11 @@ cargo +nightly install racer
 rustup component add rust-src
 ```
 
+#### Install system requirements for `pgsql.vim`:
+```
+sudo apt install postgresql postgresql-contrib
+```
+
 #### Install Neovim:
 ```
 https://neovim.io
