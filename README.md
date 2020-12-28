@@ -10,9 +10,9 @@
 
 ### Requirements
 
-#### Install Powerline fonts:
+#### Install Powerline fonts `github.com/powerline/fonts`:
 ```
-https://github.com/powerline/fonts
+sudo apt-get install fonts-powerline
 ```
 
 #### Install system requirements for coc (autocomplete support in vim):
