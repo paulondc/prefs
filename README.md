@@ -68,6 +68,21 @@ HISTFILESIZE=200000
 export PYTHONDONTWRITEBYTECODE=1
 ```
 
+Inputrc defaults (`~/inputrc`):
+```
+# arrow up/down to auto-complete based on the history
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# control arrow left/right to move the cursor between words
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+```
+
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./kitty-themes/themes/Galaxy.conf
