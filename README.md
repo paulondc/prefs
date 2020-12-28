@@ -58,31 +58,6 @@ Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
 https://github.com/dexpota/kitty-themes
 ```
 
-Bashrc defaults (`~/.bashrc`): 
-```
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=200000
-
-# nope.
-export PYTHONDONTWRITEBYTECODE=1
-```
-
-Inputrc defaults (`~/inputrc`):
-```
-# arrow up/down to auto-complete based on the history
-"\e[A":history-search-backward
-"\e[B":history-search-forward
-
-# control arrow left/right to move the cursor between words
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
-```
-
 Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./kitty-themes/themes/Galaxy.conf
@@ -111,6 +86,31 @@ sudo update-alternatives --config x-terminal-emulator
 I use the alias `v` to launch nvim, added to `~/.bashrc`:
 ```bash
 alias v='nvim'
+```
+
+Bashrc defaults (`~/.bashrc`): 
+```
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# NO GOD! PLEASE NO!!! NOOOOOOOOOO
+export PYTHONDONTWRITEBYTECODE=1
+```
+
+Inputrc defaults (`~/inputrc`):
+```
+# arrow up/down to auto-complete based on the history
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# control arrow left/right to move the cursor between words
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
 ```
 
 Map `capslock` to `esc` by adding the line below to your `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
