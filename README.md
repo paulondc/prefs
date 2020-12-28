@@ -94,11 +94,11 @@ Bashrc defaults (`~/.bashrc`):
 HISTSIZE=100000
 HISTFILESIZE=200000
 
-# NO GOD! PLEASE NO!!! NOOOOOOOOOO
+# avoiding to create python's pyc|__pycache__ during the dev environment.
 export PYTHONDONTWRITEBYTECODE=1
 ```
 
-Inputrc defaults (`~/inputrc`):
+Inputrc defaults (`~/.inputrc`):
 ```
 # arrow up/down to auto-complete based on the history
 "\e[A":history-search-backward
