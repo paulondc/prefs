@@ -70,6 +70,9 @@ vmap <C-_> <Plug>Commentary
 " # (c/c++) clangd language server:
 " sudo apt-get install clangd
 "
+" # cmake:
+" sudo apt-get install cmake
+"
 " # (rust) install racer to the system:
 " cargo +nightly install racer
 "
@@ -77,7 +80,7 @@ vmap <C-_> <Plug>Commentary
 " rustup component add rust-src
 "
 " # manual install:
-" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright coc-clangd
+" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright coc-clangd coc-cmake
 "
 " automatic install:
 let g:coc_global_extensions = [
@@ -89,6 +92,7 @@ let g:coc_global_extensions = [
 \ 'coc-rust-analyzer',
 \ 'coc-pyright',
 \ 'coc-clangd',
+\ 'coc-cmake',
 \ ]
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
