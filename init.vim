@@ -89,11 +89,7 @@ let g:coc_global_extensions = [
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
 
-Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
-
-" TODO: need to have a way to disable auto-pairs when the next character
-" is not endl
 Plug 'ap/vim-css-color'
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -130,24 +126,10 @@ colorscheme deus
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '>>'
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-
-let g:ale_linters = {
-\   'cpp': ['clangtidy'],
-\   'python': ['pylama'],
-\}
-
 let g:ctrlp_prompt_mappings = {
 \   'AcceptSelection("e")': ['<2-LeftMouse>'],
 \   'AcceptSelection("t")': ['<cr>'],
 \}
-
-" ale
-let g:c_build_dir = getcwd()."/build"
 
 " show line numbers
 set number
@@ -217,7 +199,6 @@ set completeopt-=preview
 
 " disabling plugins during multiple cursors
 function Multiple_cursors_before()
-  let g:ale_enabled = 0
   set foldmethod=manual
   if exists(':NeoCompleteLock')==2
     exe 'NeoCompleteLock'
@@ -226,7 +207,6 @@ endfunction
 
 function Multiple_cursors_after()
   set foldmethod=syntax
-  let g:ale_enabled = 1
   if exists(':NeoCompleteUnlock')==2
     exe 'NeoCompleteUnlock'
   endif
