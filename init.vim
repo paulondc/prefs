@@ -57,7 +57,6 @@ let g:ctrlp_custom_ignore = {
 \ 'dir': '\v(\.git|node_modules|__pycache__|build|target|htmlcov|dist)$',
 \ 'file': '\v\.(swp|ico|git|pyc|lock)$',
 \ }
-
 let g:ctrlp_prompt_mappings = {
 \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
 \ 'AcceptSelection("t")': ['<cr>'],
@@ -91,7 +90,7 @@ vmap <C-up> <Plug>MoveBlockUp
 
 " comment/uncomment selected lines by hitting: ctrl + /
 Plug 'tpope/vim-commentary'
-" README: neovim on linux pressing <C-/> registers as <C-_>
+" in neovim on linux pressing <C-/> is registered as <C-_>
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
@@ -107,7 +106,10 @@ let g:coc_global_extensions = [
 \ 'coc-clangd',
 \ 'coc-cmake',
 \ ]
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
+Plug 'neoclide/coc.nvim', {
+\ 'branch': 'release',
+\ 'do': { -> coc#util#install() }
+\ }
 
 " multiple cursors support
 Plug 'terryma/vim-multiple-cursors'
@@ -199,12 +201,6 @@ nnoremap <esc><esc> :noh<return>
 " replacing the current buffer
 set switchbuf=useopen,usetab
 
-" navigate in the definitions
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 " removing the autocomplete preview displayed on top
 set completeopt-=preview
 
@@ -223,7 +219,7 @@ function Multiple_cursors_after()
   endif
 endfunction
 
-" term: hide line numbers and start in insert mode
+" hide line numbers and start in insert mode in terminal
 function! TermModeDefauts()
   set norelativenumber
   set nonumber
@@ -255,7 +251,7 @@ function! HandleHighlight()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunc
 
-" nerd tree opens automatically when launching vim from a directory
+" opening nerd tree automatically when launching vim from a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in")
       \ | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -263,24 +259,34 @@ autocmd BufWinEnter * NERDTreeMirror
 autocmd bufenter * if (winnr("$") == 1 && tabpagenr() > 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
 
-" scroll documentation in coc autocomplete
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+" navigate in the definitions in coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" use <tab> for trigger completion and navigate to the next complete item
+" scroll documentation in coc autocomplete
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll()
+      \ ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll()
+      \ ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll()
+      \ ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll()
+      \ ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" use <tab> for trigger completion and navigate to the next complete item in coc
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" use tab for trigger completion with characters ahead and navigate.
+" use tab for trigger completion with characters ahead and navigate in coc
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space()
       \ ? "\<Tab>" : coc#refresh()
 
-" symbol renaming
+" symbol renaming in coc
 nmap <silent>rn <Plug>(coc-rename)
 
-" formatting selected code
+" formatting selected code in coc
 xmap <silent>f <Plug>(coc-format-selected)
