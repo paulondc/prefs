@@ -1,11 +1,10 @@
 " specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+" nerd tree
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeShowHidden = 1
@@ -13,32 +12,8 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
 
 " status bar
-" required fonts:
-" https://github.com/powerline/fonts
-" sudo apt install fonts-powerline
-Plug 'wincent/ferret'
 Plug 'vim-airline/vim-airline'
-Plug 'kshenoy/vim-signature'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'osyo-manga/vim-over'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'mhinz/vim-signify'
-Plug 'hjson/vim-hjson'
-" vim-sandwich can potentially replace vim-surround, keeping both for now
-Plug 'tpope/vim-surround'
-Plug 'machakann/vim-sandwich'
-Plug 'brooth/far.vim'
-Plug 'matze/vim-move'
-Plug 'nikvdp/ejs-syntax'
-Plug 'tpope/vim-commentary'
-" sudo apt install postgresql postgresql-contrib
-Plug 'lifepillar/pgsql.vim'
-let g:sql_type_default = 'pgsql'
-let g:far#auto_preview = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -50,39 +25,62 @@ let g:airline#extensions#tabline#buffers_label = ''
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" ctrl+p ignore
+" color schemes (loaded later)
+Plug 'rafi/awesome-vim-colorschemes'
+
+" search and replace highlight
+Plug 'osyo-manga/vim-over'
+
+" nice defaults settings for vim
+Plug 'tpope/vim-sensible'
+
+" auto tab based on the current file
+Plug 'tpope/vim-sleuth'
+
+" full path fuzzy file, buffer finder
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|__pycache__|build|target|htmlcov|dist)|(\.(swp|ico|git|pyc))$'
+let g:ctrlp_prompt_mappings = {
+\   'AcceptSelection("e")': ['<2-LeftMouse>'],
+\   'AcceptSelection("t")': ['<cr>'],
+\}
 
-" move selection
+" syntax highlight for Hjson
+Plug 'hjson/vim-hjson'
+
+" ejs syntax highlight
+Plug 'nikvdp/ejs-syntax'
+
+" css color highlight
+Plug 'ap/vim-css-color'
+
+" pgsql syntax highlight
+Plug 'lifepillar/pgsql.vim'
+let g:sql_type_default = 'pgsql'
+
+" surround extension for vim
+Plug 'tpope/vim-surround'
+
+" search and replace across multiple files
+Plug 'brooth/far.vim'
+let g:far#auto_preview = 0
+
+" move block selection
+Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
 vmap <C-down> <Plug>MoveBlockDown
 vmap <C-up> <Plug>MoveBlockUp
 
-" vim commentary
-" neovim on linux pressing <C-/> registers as <C-_>
+" comment/uncomment selected lines by hitting: ctrl + /
+Plug 'tpope/vim-commentary'
+" README: neovim on linux pressing <C-/> registers as <C-_>
 nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
-" Coc requirements:
-" # (python) make sure nodejs 12+ is available in the PATH
-"
-" # (c/c++) clangd language server:
-" sudo apt-get install clangd
-"
-" # cmake:
-" sudo apt-get install cmake
-"
-" # (rust) install racer to the system:
-" cargo +nightly install racer
-"
-" # (rust) add rust source code to the system:
-" rustup component add rust-src
-"
-" # manual install:
-" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright coc-clangd coc-cmake
-"
-" automatic install:
+" auto complete support
 let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-yaml',
@@ -94,12 +92,16 @@ let g:coc_global_extensions = [
 \ 'coc-clangd',
 \ 'coc-cmake',
 \ ]
-
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
 
+" multiple cursors support
 Plug 'terryma/vim-multiple-cursors'
-Plug 'ap/vim-css-color'
+
+" get rid of trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_guicolor='#263247'
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 1
 
 " json
 Plug 'elzr/vim-json'
@@ -118,8 +120,9 @@ endif
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Theme
+" enabling theme
 syntax enable
+colorscheme deus "or onedark
 
 " disable folding
 set nofoldenable
@@ -127,17 +130,6 @@ set nofoldenable
 " improving scrolling speed in large files
 set lazyredraw
 set regexpengine=1
-
-" colorscheme onedark
-colorscheme deus
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-let g:ctrlp_prompt_mappings = {
-\   'AcceptSelection("e")': ['<2-LeftMouse>'],
-\   'AcceptSelection("t")': ['<cr>'],
-\}
 
 " show line numbers
 set number
@@ -147,11 +139,6 @@ set scrolloff=5
 
 " clipboard
 set clipboard+=unnamedplus
-
-" get rid of trailling white spaces on save
-let g:better_whitespace_guicolor='#263247'
-let g:better_whitespace_enabled = 1
-let g:strip_whitespace_on_save = 1
 
 " tabs
 set tabstop=4       " The width of a TAB is set to 4.
@@ -168,10 +155,10 @@ set expandtab       " Expand TABs to spaces
 " white space chars
 set listchars=tab:>·,trail:~,extends:>,precedes:<,space:.
 
-" Enable spell checking (z= to show suggestions)
+" enable spell checking (z= to show suggestions)
 set spell
 
-" Spell checking languages
+" spell checking languages
 set spelllang=en
 
 " f1 toggle nerdtree
@@ -258,9 +245,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd BufWinEnter * NERDTreeMirror
 autocmd bufenter * if (winnr("$") == 1 && tabpagenr() > 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
-
-" update title (necessary to update nvim-qt window's title)
-set title
 
 " scroll documentation in coc autocomplete
 nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
