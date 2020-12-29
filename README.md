@@ -28,7 +28,7 @@ rustup component add rust-src
 
 #### Add json configuration for Coc (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
 
-This configuration allows errors to be reported directory in the line of the error (instead of having to browse up to the error chars)
+This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column)
 ```json
 {
   "diagnostic.checkCurrentLine": true
