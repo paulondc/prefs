@@ -80,7 +80,7 @@ sudo apt-get install lldb gdb
 sudo apt-get install kdiff3 gitk
 ```
 
-####  Install font `JetBrains Mono`:
+####  Install font `JetBrains Mono` `(~/.local/share/fonts)`:
 ```
 https://www.jetbrains.com/lp/mono/#design
 ```
@@ -90,7 +90,7 @@ https://www.jetbrains.com/lp/mono/#design
 https://github.com/kovidgoyal/kitty
 ```
 
-####  Install `Kitty themes` `(kitty-themes/themes/Galaxy.conf)`:
+####  Install `Kitty themes` `(~/.config/kitty/kitty-themes/themes)`:
 ```
 https://github.com/dexpota/kitty-themes
 ```
