@@ -22,6 +22,9 @@ sudo apt-get install fonts-powerline
 # (c/c++) clangd language server:
 sudo apt-get install clangd 
 
+# cmake:
+sudo apt-get install cmake
+
 # (rust) install racer to the system:
 cargo +nightly install racer
 
