@@ -5,11 +5,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'paulondc/vim-nerdtree-open-externally'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-let g:NERDTreeChDirMode = 2
-let g:NERDTreeShowLineNumbers = 0
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeIgnore = [
+let g:NERDTreeChDirMode=2
+let g:NERDTreeShowLineNumbers=0
+let g:NERDTreeShowHidden=1
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeIgnore=[
 \ 'build',
 \ 'target',
 \ '.coverage',
@@ -22,19 +22,19 @@ let g:NERDTreeIgnore = [
 " status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#buffers_label = ''
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#tab_nr_type=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep='|'
+let g:airline#extensions#tabline#formatter='default'
+let g:airline#extensions#tabline#tabs_label=''
+let g:airline#extensions#tabline#show_splits=0
+let g:airline#extensions#tabline#buffers_label=''
+let g:airline#extensions#tabline#show_buffers=0
+let g:airline#extensions#tabline#show_close_button=0
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
 
 " display markers as a separated column beside of the line number
 Plug 'kshenoy/vim-signature'
@@ -53,11 +53,11 @@ Plug 'tpope/vim-sleuth'
 
 " full path fuzzy file, buffer finder
 Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = {
+let g:ctrlp_custom_ignore={
 \ 'dir': '\v(\.git|node_modules|__pycache__|build|target|htmlcov|dist)$',
 \ 'file': '\v\.(swp|ico|git|pyc|lock)$',
 \ }
-let g:ctrlp_prompt_mappings = {
+let g:ctrlp_prompt_mappings={
 \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
 \ 'AcceptSelection("t")': ['<cr>'],
 \ }
@@ -73,18 +73,18 @@ Plug 'ap/vim-css-color'
 
 " pgsql syntax highlight
 Plug 'lifepillar/pgsql.vim'
-let g:sql_type_default = 'pgsql'
+let g:sql_type_default='pgsql'
 
 " surround extension for vim
 Plug 'tpope/vim-surround'
 
 " search and replace across multiple files
 Plug 'brooth/far.vim'
-let g:far#auto_preview = 0
+let g:far#auto_preview=0
 
 " move block selection
 Plug 'matze/vim-move'
-let g:move_key_modifier = 'C'
+let g:move_key_modifier='C'
 vmap <C-down> <Plug>MoveBlockDown
 vmap <C-up> <Plug>MoveBlockUp
 
@@ -95,7 +95,7 @@ nmap <C-_> <Plug>Commentary
 vmap <C-_> <Plug>Commentary
 
 " auto complete support
-let g:coc_global_extensions = [
+let g:coc_global_extensions=[
 \ 'coc-json',
 \ 'coc-yaml',
 \ 'coc-tsserver',
@@ -116,9 +116,9 @@ Plug 'terryma/vim-multiple-cursors'
 
 " get rid of trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
-let g:better_whitespace_guicolor = '#263247'
-let g:better_whitespace_enabled = 1
-let g:strip_whitespace_on_save = 1
+let g:better_whitespace_guicolor='#263247'
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 " nice way to interact with json in vim
 Plug 'elzr/vim-json'
@@ -279,7 +279,7 @@ inoremap <nowait><expr> <C-b> coc#float#has_scroll()
 " use <tab> for trigger completion and navigate to the next complete item in coc
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~ '\s'
+  return !col || getline('.')[col - 1]=~'\s'
 endfunction
 
 " use tab for trigger completion with characters ahead and navigate in coc
