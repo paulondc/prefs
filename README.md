@@ -17,7 +17,8 @@ sudo apt-get install fonts-powerline
 
 #### Install system requirements for Coc (autocomplete support in vim):
 ```
-# (python) make sure nodejs 12+ is available in the PATH
+# (python) make sure nodejs 12+ is always available in the PATH when running vim (~/.bashrc)
+export PATH="<SOMEWHERE>/node-<VER>-linux-x64/bin:$PATH"
 
 # (c/c++) clangd language server:
 sudo apt-get install clangd 
@@ -56,6 +57,11 @@ sudo apt-get install libpq-dev libsqlite3-dev
 sudo apt-get install lldb gdb
 ```
 
+#### Install diff/history tools:
+```
+sudo apt-get install kdiff3 gitk
+```
+
 #### Install Neovim:
 ```
 https://neovim.io
@@ -67,7 +73,7 @@ https://github.com/junegunn/vim-plug
 ```
 > linux: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-Run the plugins installation inside nvim:
+#### Run plug installation inside vim:
 ```
 :PlugInstall
 ```
@@ -139,6 +145,20 @@ export PYTHONDONTWRITEBYTECODE=1
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+```
+
+#### Git config defaults (`~/.gitconfig`):
+```
+[credential]
+  helper = cache --timeout=36000000
+[core]
+  editor = nvim
+[diff]
+  guitool = kdiff3
+[difftool "kdiff3"]
+  trustExitCode = false
+[difftool]
+  prompt = false
 ```
 
 #### Map `capslock` to `esc`:
