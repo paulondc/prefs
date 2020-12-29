@@ -264,13 +264,8 @@ endfunction
 " use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 
-" highlight the symbol and its references when holding the cursor (after ~3
-" seconds)
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" symbol renaming
+nmap <silent>rn <Plug>(coc-rename)
 
-" symbol renaming by: \ + r + n
-nmap <leader>rn <Plug>(coc-rename)
-
-" formatting code by: \ + f
-xmap <leader>f  <Plug>(coc-format)
-nmap <leader>f  <Plug>(coc-format)
+" formatting selected code
+xmap <silent>f  <Plug>(coc-format-selected)
