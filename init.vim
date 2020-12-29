@@ -28,6 +28,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+" display markers as a separated column beside of the line number
+Plug 'kshenoy/vim-signature'
+
 " color schemes (loaded later)
 Plug 'rafi/awesome-vim-colorschemes'
 
@@ -109,10 +112,10 @@ Plug 'elzr/vim-json'
 " show git diff as column
 Plug 'airblade/vim-gitgutter'
 
-" Initialize plugin system
+" initializing plugin system
 call plug#end()
 
-" If you have vim >=8.0 or Neovim >= 0.1.5
+" if you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -122,7 +125,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " enabling theme
 syntax enable
-colorscheme deus "or onedark
+colorscheme onedark " deus
 
 " disable folding
 set nofoldenable
@@ -224,8 +227,8 @@ endfunc
 nnoremap <C-T> :call SplitWindowToTerm()<CR>
 
 " Background colors for active vs inactive windows
-"hi ActiveWindow guibg=#282c34
-"hi InactiveWindow guibg=#22262e
+hi ActiveWindow guibg=#282c34
+hi InactiveWindow guibg=#22262e
 
 " change highlight group of active/inactive windows
 augroup WindowManagement
