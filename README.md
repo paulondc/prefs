@@ -19,6 +19,9 @@ sudo apt-get install fonts-powerline
 ```
 # (python) make sure nodejs 12+ is available in the PATH
 
+# (c/c++) clangd language server:
+sudo apt-get install clangd 
+
 # (rust) install racer to the system:
 cargo +nightly install racer
 
