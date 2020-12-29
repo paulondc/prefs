@@ -68,7 +68,7 @@ vmap <C-_> <Plug>Commentary
 " # (python) make sure nodejs 12+ is available in the PATH
 "
 " # (c/c++) clangd language server:
-" sudo apt-get install clangd 
+" sudo apt-get install clangd
 "
 " # (rust) install racer to the system:
 " cargo +nightly install racer
