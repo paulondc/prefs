@@ -67,6 +67,9 @@ vmap <C-_> <Plug>Commentary
 " Coc requirements:
 " # (python) make sure nodejs 12+ is available in the PATH
 "
+" # (c/c++) clangd language server:
+" sudo apt-get install clangd 
+"
 " # (rust) install racer to the system:
 " cargo +nightly install racer
 "
@@ -74,7 +77,7 @@ vmap <C-_> <Plug>Commentary
 " rustup component add rust-src
 "
 " # manual install:
-" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright
+" CocInstall coc-json coc-yaml coc-sh coc-tsserver coc-pairs coc-rust-analyzer coc-pyright coc-clangd
 "
 " automatic install:
 let g:coc_global_extensions = [
@@ -85,6 +88,7 @@ let g:coc_global_extensions = [
 \ 'coc-pairs',
 \ 'coc-rust-analyzer',
 \ 'coc-pyright',
+\ 'coc-clangd',
 \ ]
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
