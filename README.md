@@ -162,11 +162,5 @@ export PYTHONDONTWRITEBYTECODE=1
   prompt = false
 ```
 
-#### Map `capslock` to `esc`:
-Add the line below to the `~/.profile` (capslook gets in the way when using vim and at same time esc can be "hard" to reach by doing this it fixes two potential issues):
-```bash
-setxkbmap -option caps:escape
-```
-
 ### Licence
 vim-prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
