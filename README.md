@@ -52,16 +52,6 @@ Alos, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on th
 sudo apt-get install libpq-dev libsqlite3-dev
 ```
 
-#### Install debuggers:
-```
-sudo apt-get install lldb gdb
-```
-
-#### Install diff/history tools:
-```
-sudo apt-get install kdiff3 gitk
-```
-
 #### Install Neovim:
 ```
 https://neovim.io
@@ -79,6 +69,17 @@ https://github.com/junegunn/vim-plug
 ```
 
 ### Optional
+
+#### Install debuggers:
+```
+sudo apt-get install lldb gdb
+```
+
+#### Install diff/history tools:
+```
+sudo apt-get install kdiff3 gitk
+```
+
 ####  Install font `JetBrains Mono`:
 ```
 https://www.jetbrains.com/lp/mono/#design
