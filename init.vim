@@ -114,7 +114,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 " get rid of trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
-let g:better_whitespace_guicolor='#263247'
+let g:better_whitespace_guicolor = '#263247'
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 
