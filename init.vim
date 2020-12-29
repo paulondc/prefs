@@ -103,7 +103,7 @@ let g:better_whitespace_guicolor='#263247'
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 
-" json
+" nice way to interact with json in vim
 Plug 'elzr/vim-json'
 
 " show git diff as column
