@@ -15,7 +15,7 @@
 sudo apt-get install fonts-powerline
 ```
 
-#### Install system requirements for coc (autocomplete support in vim):
+#### Install system requirements for Coc (autocomplete support in vim):
 ```
 # (python) make sure nodejs 12+ is available in the PATH
 
