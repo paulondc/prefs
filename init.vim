@@ -261,7 +261,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+
+" highlight the symbol and its references when holding the cursor (after ~3
+" seconds)
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" symbol renaming by: \ + r + n
+nmap <leader>rn <Plug>(coc-rename)
+
+" formatting code by: \ + f
+xmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
