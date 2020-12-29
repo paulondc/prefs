@@ -226,7 +226,7 @@ function! SplitWindowToTerm()
 endfunc
 nnoremap <C-T> :call SplitWindowToTerm()<CR>
 
-" Background colors for active vs inactive windows
+" background colors for active vs inactive windows
 hi ActiveWindow guibg=#282c34
 hi InactiveWindow guibg=#22262e
 
@@ -242,7 +242,7 @@ function! HandleHighlight()
   setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunc
 
-" NERDTree opens automatically when launching vim from a directory
+" nerd tree opens automatically when launching vim from a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd BufWinEnter * NERDTreeMirror
