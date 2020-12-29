@@ -47,7 +47,7 @@ This configuration allows errors to be reported directly in the whole line of th
 sudo apt install postgresql postgresql-contrib
 ```
 
-Alos, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on the system:
+Also, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on the system:
 ```
 sudo apt-get install libpq-dev libsqlite3-dev
 ```
