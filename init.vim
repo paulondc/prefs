@@ -9,7 +9,15 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git$', '.coverage']
+let g:NERDTreeIgnore = [
+\ 'build',
+\ 'target',
+\ '.coverage',
+\ '__pycache__',
+\ '\.pyc$',
+\ '\.git$',
+\ '.lock',
+\ ]
 
 " status bar
 Plug 'vim-airline/vim-airline'
@@ -45,11 +53,15 @@ Plug 'tpope/vim-sleuth'
 
 " full path fuzzy file, buffer finder
 Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|__pycache__|build|target|htmlcov|dist)|(\.(swp|ico|git|pyc))$'
+let g:ctrlp_custom_ignore = {
+\ 'dir': '\v(\.git|node_modules|__pycache__|build|target|htmlcov|dist)$',
+\ 'file': '\v\.(swp|ico|git|pyc|lock)$',
+\ }
+
 let g:ctrlp_prompt_mappings = {
-\   'AcceptSelection("e")': ['<2-LeftMouse>'],
-\   'AcceptSelection("t")': ['<cr>'],
-\}
+\ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+\ 'AcceptSelection("t")': ['<cr>'],
+\ }
 
 " syntax highlight for Hjson
 Plug 'hjson/vim-hjson'
@@ -117,7 +129,7 @@ call plug#end()
 
 " if you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
-    set termguicolors
+  set termguicolors
 endif
 
 " For Neovim 0.1.3 and 0.1.4
@@ -183,7 +195,8 @@ tnoremap <Esc> <C-\><C-n>
 " clear hightlight
 nnoremap <esc><esc> :noh<return>
 
-" jump to a buffer where it is (in another window, another tab) instead of replacing the current buffer
+" jump to a buffer where it is (in another window, another tab) instead of
+" replacing the current buffer
 set switchbuf=useopen,usetab
 
 " navigate in the definitions
@@ -244,7 +257,8 @@ endfunc
 
 " nerd tree opens automatically when launching vim from a directory
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in")
+      \ | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd BufWinEnter * NERDTreeMirror
 autocmd bufenter * if (winnr("$") == 1 && tabpagenr() > 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
@@ -262,10 +276,11 @@ function! s:check_back_space() abort
 endfunction
 
 " use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space()
+      \ ? "\<Tab>" : coc#refresh()
 
 " symbol renaming
 nmap <silent>rn <Plug>(coc-rename)
 
 " formatting selected code
-xmap <silent>f  <Plug>(coc-format-selected)
+xmap <silent>f <Plug>(coc-format-selected)
