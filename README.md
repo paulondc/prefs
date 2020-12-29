@@ -1,4 +1,4 @@
-# Backup of my neovim preferences
+# Backup of my vim preferences
 <p align="center">
   <img src="data/screenshot.png?v=1"/>
 </p>
