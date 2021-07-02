@@ -291,3 +291,6 @@ nmap <silent>rn <Plug>(coc-rename)
 
 " formatting selected code in coc
 xmap <silent>f <Plug>(coc-format-selected)
+
+" disabling the pairs for < in coc
+autocmd FileType * let b:coc_pairs_disabled = ['<']
