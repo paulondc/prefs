@@ -28,7 +28,7 @@ sudo apt-get install cmake
 
 # install rust:
 # https://www.rust-lang.org/tools/install
-rustup default nightlyrustup default nightly
+rustup default nightly
 
 # (rust) install racer to the system:
 cargo +nightly install racer
