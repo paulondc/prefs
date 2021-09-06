@@ -94,14 +94,16 @@ https://www.jetbrains.com/lp/mono/#design
 https://github.com/kovidgoyal/kitty
 ```
 
-####  Install `Kitty themes` `(~/.config/kitty/kitty-themes/themes)`:
+####  Install `Kitty themes` `(~/.config/kitty/themes)`:
 ```
 https://github.com/dexpota/kitty-themes
+
+# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
 ```
 
 #### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
-include ./kitty-themes/themes/Galaxy.conf
+include ./themes/Galaxy.conf
 
 font_family      JetBrains Mono
 bold_font        auto
