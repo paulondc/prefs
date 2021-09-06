@@ -27,6 +27,7 @@ sudo apt-get install clangd
 sudo apt-get install cmake
 
 # (rust) install racer to the system:
+sudo apt-get install cargo
 cargo +nightly install racer
 
 # (rust) add rust source code to the system:
