@@ -37,15 +37,6 @@ cargo +nightly install racer
 rustup component add rust-src
 ```
 
-#### Add json configuration for Coc (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
-
-This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column)
-```json
-{
-  "diagnostic.checkCurrentLine": true
-}
-```
-
 #### Install system requirements for `pgsql.vim`:
 ```
 sudo apt install postgresql postgresql-contrib
@@ -70,6 +61,15 @@ https://github.com/junegunn/vim-plug
 #### Run plug installation inside vim:
 ```
 :PlugInstall
+```
+
+#### Add json configuration for Coc (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
+
+This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column)
+```json
+{
+  "diagnostic.checkCurrentLine": true
+}
 ```
 
 ### Optional
