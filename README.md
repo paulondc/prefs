@@ -70,7 +70,7 @@ chmod +x gnome-prefs
 
 ### Requirements
 
-#### Install Powerline fonts `github.com/powerline/fonts`:
+#### Install [Powerline fonts](https://github.com/powerline/fonts):
 ```
 sudo apt-get install fonts-powerline
 ```
@@ -97,7 +97,7 @@ cargo +nightly install racer
 rustup component add rust-src
 ```
 
-#### Install system requirements for `pgsql.vim`:
+#### Install system requirements for pgsql.vim:
 ```
 sudo apt install postgresql postgresql-contrib
 ```
