@@ -15,7 +15,7 @@ Rofi defaults (`~/.config/rofi/config.rasi`):
 @theme "/usr/share/rofi/themes/android_notification.rasi"
 ```
 
-####  Install Kitty:
+####  Install [Kitty](https://sw.kovidgoyal.net/kitty):
 ```
 https://github.com/kovidgoyal/kitty
 ```
@@ -107,7 +107,7 @@ Also, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on th
 sudo apt-get install libpq-dev libsqlite3-dev
 ```
 
-#### Install Neovim:
+#### Install [Neovim](https://neovim.io):
 ```
 https://neovim.io
 ```
