@@ -75,7 +75,7 @@ chmod +x gnome-prefs
 sudo apt-get install fonts-powerline
 ```
 
-#### Install system requirements for Coc (autocomplete support in vim):
+#### Install system requirements for [Coc](https://github.com/neoclide/coc.nvim) (autocomplete support in vim):
 ```
 # (python) make sure nodejs 12+ is always available in the PATH when running vim (~/.bashrc)
 export PATH="<SOMEWHERE>/node-<VER>-linux-x64/bin:$PATH"
