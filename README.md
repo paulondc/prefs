@@ -149,8 +149,8 @@ sudo apt-get install kdiff3 gitk
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-#### Shell option A: Fish (recommended)
-Install [fish](https://fishshell.com)
+#### Shell option A: [Fish](https://fishshell.com) (recommended)
+Install fish
 ```bash
 sudo apt-get install fish
 ```
