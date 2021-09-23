@@ -20,7 +20,7 @@ Rofi defaults (`~/.config/rofi/config.rasi`):
 https://github.com/kovidgoyal/kitty
 ```
 
-Install Kitty themes `(~/.config/kitty/themes)`:
+Install Kitty themes (`~/.config/kitty/themes`):
 ```
 https://github.com/dexpota/kitty-themes
 
@@ -33,7 +33,7 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
+Add the config to kitty (`~/.config/kitty/kitty.conf`) (`ctrl + shift + F2`):
 ```
 include ./themes/Galaxy.conf
 
@@ -112,11 +112,10 @@ sudo apt-get install libpq-dev libsqlite3-dev
 sudo apt-get install neovim
 ```
 
-#### Install vim-plug:
+#### Install [vim-plug](https://github.com/junegunn/vim-plug):
 ```
-https://github.com/junegunn/vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-> linux: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 #### Run plug installation inside vim:
 ```
