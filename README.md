@@ -132,7 +132,7 @@ This configuration allows errors to be reported directly in the whole line of th
 }
 ```
 
-## Optional Preferences
+## Extra goodies
 
 #### Install debuggers:
 ```
