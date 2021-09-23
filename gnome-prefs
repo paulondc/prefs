@@ -5,7 +5,7 @@ set -e
 #     :.:.:.:.:.:.  Backup of my gnome preferences (github.com/paulondc/prefs)
 #     ::::::::::::
 #     ::::::::::::  This script was mainly created to share my desktop settings with
-#     ::::::::::::  family & friends. Overall, the tweaks are a pretty vanilla.
+#     ::::::::::::  family & friends. Overall, the tweaks are pretty vanilla.
 #   _/        / \: 
 #  \ \________\_/:  Hotkeys:
 #   \ ::::::::::::  <CTRL> + <ALT> + <T>   = launch terminal (github.com/kovidgoyal/kitty)
