@@ -33,7 +33,7 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-Add the config to kitty (`~/.config/kitty/kitty.conf`) (`ctrl + shift + F2`):
+Add the config to kitty (`~/.config/kitty/kitty.conf` or `ctrl + shift + F2`):
 ```
 include ./themes/Galaxy.conf
 
