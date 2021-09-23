@@ -1,4 +1,4 @@
-# Backup of my vim (and dev) preferences
+# Backup of dev preferences
 
 ### Gnome preferences
 <p align="center">
