@@ -144,7 +144,7 @@ sudo apt-get install lldb gdb
 sudo apt-get install kdiff3 gitk
 ```
 
-####  Install font JetBrains Mono `(~/.local/share/fonts)`:
+####  Install font JetBrains Mono (`~/.local/share/fonts`):
 ```
 https://www.jetbrains.com/lp/mono/#design
 ```
