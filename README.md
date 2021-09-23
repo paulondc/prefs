@@ -1,6 +1,6 @@
 # Backup of my preferences
 
-### Desktop preferences (Gnome)
+## Desktop (Gnome)
 <p align="center">
   <img src="data/gnome-prefs-screenshot.png?v=2"/>
 </p>
@@ -58,7 +58,7 @@ chmod +x gnome-prefs
 ./gnome-prefs
 ```
 
-## Vim preferences
+## Vim
 <p align="center">
   <img src="data/screenshot.png?v=1"/>
 </p>
