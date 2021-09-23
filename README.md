@@ -1,4 +1,4 @@
-# Backup of dev preferences
+# Backup of preferences
 
 ### Desktop preferences (Gnome)
 <p align="center">
