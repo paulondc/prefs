@@ -2,7 +2,7 @@
 set -e
 
 #     .   .   . .
-#     :.:.:.:.:.:.  Backup of my gnome preferences (github.com/paulondc)
+#     :.:.:.:.:.:.  Backup of my gnome preferences (github.com/paulondc/vim-prefs)
 #     ::::::::::::
 #     ::::::::::::  This script was mainly created to share my desktop settings with
 #     ::::::::::::  family & friends. Overall, the tweaks are a pretty vanilla.
