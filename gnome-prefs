@@ -12,9 +12,9 @@ set -e
 #    \______        <SUPER> + <SPACE>      = launch window switcher/app launcher (github.com/davatorium/rofi)
 #           \       <SUPER> + <E>          = launch file manager
 #            \_     <SUPER> + <D>          = hide all windows
-#            \ \    <SUPER> + <LEFT|RIGHT> = switch virtual desktop
-#             \ \
-#              `-`
+#             \ \   <SUPER> + <LEFT|RIGHT> = switch virtual desktop
+#              \ \
+#               `-`
 
 # REQUIREMENTS
 minGnomeShellVer="40.1"
