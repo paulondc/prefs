@@ -52,7 +52,7 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-#### Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
+#### Download and run the [gnome-prefs](./gnome-prefs) script (found on this repo)
 ```
 chmod +x gnome-prefs
 ./gnome-prefs
