@@ -5,6 +5,47 @@
   <img src="data/gnome-prefs-screenshot.png?v=1"/>
 </p>
 
+#### install Rofi:
+```
+sudo apt-get install rofi
+```
+
+Rofi defaults (`~/.config/rofi/config.rasi`):
+```
+@theme "/usr/share/rofi/themes/android_notification.rasi"
+```
+
+####  Install Kitty`:
+```
+https://github.com/kovidgoyal/kitty
+```
+
+####  Install `Kitty themes` `(~/.config/kitty/themes)`:
+```
+https://github.com/dexpota/kitty-themes
+
+# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
+```
+
+#### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
+```
+include ./themes/Galaxy.conf
+
+font_family      JetBrains Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        11.0
+
+enable_audio_bell no
+draw_minimal_borders yes
+tab_bar_style separator
+active_tab_background #eee
+
+map shift+enter send_text all \x1b[13;2u
+map ctrl+enter send_text all \x1b[13;5u
+```
+
 Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
 ```
 chmod +x gnome-prefs
@@ -102,44 +143,45 @@ sudo apt-get install kdiff3 gitk
 https://www.jetbrains.com/lp/mono/#design
 ```
 
-####  Install `Kitty`:
-```
-https://github.com/kovidgoyal/kitty
-```
-
-####  Install `Kitty themes` `(~/.config/kitty/themes)`:
-```
-https://github.com/dexpota/kitty-themes
-
-# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
-```
-
-#### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
-```
-include ./themes/Galaxy.conf
-
-font_family      JetBrains Mono
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-font_size        11.0
-
-enable_audio_bell no
-draw_minimal_borders yes
-tab_bar_style separator
-active_tab_background #eee
-
-map shift+enter send_text all \x1b[13;2u
-map ctrl+enter send_text all \x1b[13;5u
-```
-
 #### Make Kitty the default xterminal:
 ```bash
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-#### Bashrc defaults (`~/.bashrc`):
+#### Shell option A: Fish (recommended)
+Install [fish](https://fishshell.com)
+```bash
+sudo apt-get install fish
+```
+
+Set it as default shell:
+```bash
+# setting fish as default shell for my user (reboot after that)
+chsh -s /bin/fish
+```
+
+Fish defaults (`~/.config/fish/config.fish`):
+```bash
+# getting rid of the welcome message
+export fish_greeting=""
+
+# making sure neovim is the default one (I personally like to use the alias 'v' for vim)
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+# making nvim the default viewer for man
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+```
+
+#### Shell option B : Bash
+Bashrc defaults (`~/.bashrc`)
 ```
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
@@ -152,7 +194,7 @@ alias v='nvim'
 export PYTHONDONTWRITEBYTECODE=1
 ```
 
-#### Inputrc defaults (`~/.inputrc`):
+Inputrc defaults (`~/.inputrc`)
 ```
 # arrow up/down to auto-complete based on the history
 "\e[A":history-search-backward
