@@ -1,4 +1,17 @@
 # Backup of my vim (and dev) preferences
+
+### Gnome preferences
+<p align="center">
+  <img src="data/gnome-prefs-screenshot.png?v=1"/>
+</p>
+
+Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
+```
+chmod +x gnome-prefs
+./gnome-prefs
+```
+
+## Vim preferences
 <p align="center">
   <img src="data/screenshot.png?v=1"/>
 </p>
@@ -72,7 +85,7 @@ This configuration allows errors to be reported directly in the whole line of th
 }
 ```
 
-### Optional
+## Optional Preferences
 
 #### Install debuggers:
 ```
@@ -166,17 +179,6 @@ export PYTHONDONTWRITEBYTECODE=1
   trustExitCode = false
 [difftool]
   prompt = false
-```
-
-### Gnome preferences
-<p align="center">
-  <img src="data/gnome-prefs-screenshot.png?v=1"/>
-</p>
-
-Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
-```
-chmod +x gnome-prefs
-./gnome-prefs
 ```
 
 ### Licence
