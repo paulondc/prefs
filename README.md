@@ -5,7 +5,7 @@
   <img src="data/gnome-prefs-screenshot.png?v=2"/>
 </p>
 
-#### Install Rofi:
+#### Install [Rofi](https://github.com/davatorium/rofi):
 ```
 sudo apt-get install rofi
 ```
