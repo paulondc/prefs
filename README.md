@@ -220,5 +220,5 @@ Inputrc defaults (`~/.inputrc`)
   prompt = false
 ```
 
-### Licence
-vim-prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
+## Licence
+prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
