@@ -20,7 +20,7 @@ Rofi defaults (`~/.config/rofi/config.rasi`):
 https://github.com/kovidgoyal/kitty
 ```
 
-####  Install `Kitty themes` `(~/.config/kitty/themes)`:
+####  Install Kitty themes `(~/.config/kitty/themes)`:
 ```
 https://github.com/dexpota/kitty-themes
 
