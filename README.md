@@ -1,6 +1,6 @@
 # Backup of dev preferences
 
-### Gnome preferences
+### Desktop preferences (Gnome)
 <p align="center">
   <img src="data/gnome-prefs-screenshot.png?v=1"/>
 </p>
@@ -15,7 +15,7 @@ Rofi defaults (`~/.config/rofi/config.rasi`):
 @theme "/usr/share/rofi/themes/android_notification.rasi"
 ```
 
-####  Install Kitty`:
+####  Install Kitty:
 ```
 https://github.com/kovidgoyal/kitty
 ```
