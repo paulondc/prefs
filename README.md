@@ -5,7 +5,7 @@
   <img src="data/gnome-prefs-screenshot.png?v=1"/>
 </p>
 
-#### install Rofi:
+#### Install Rofi:
 ```
 sudo apt-get install rofi
 ```
@@ -20,11 +20,17 @@ Rofi defaults (`~/.config/rofi/config.rasi`):
 https://github.com/kovidgoyal/kitty
 ```
 
-####  Install Kitty themes `(~/.config/kitty/themes)`:
+Install Kitty themes `(~/.config/kitty/themes)`:
 ```
 https://github.com/dexpota/kitty-themes
 
 # Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
+```
+
+Make Kitty the default xterminal:
+```bash
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
+sudo update-alternatives --config x-terminal-emulator
 ```
 
 #### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
@@ -141,12 +147,6 @@ sudo apt-get install kdiff3 gitk
 ####  Install font `JetBrains Mono` `(~/.local/share/fonts)`:
 ```
 https://www.jetbrains.com/lp/mono/#design
-```
-
-#### Make Kitty the default xterminal:
-```bash
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
-sudo update-alternatives --config x-terminal-emulator
 ```
 
 #### Shell option A: Fish (recommended)
