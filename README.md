@@ -33,7 +33,7 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-#### Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
+Add the config to kitty `~/.config/kitty/kitty.conf` (`ctrl + shift + F2`):
 ```
 include ./themes/Galaxy.conf
 
@@ -52,7 +52,7 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
+#### Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
 ```
 chmod +x gnome-prefs
 ./gnome-prefs
