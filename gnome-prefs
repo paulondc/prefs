@@ -203,9 +203,10 @@ name='nautilus'
 EOT
 fi
 
-# making sure local directory for the wallpapers has been created
 if [[ ! -z $applyWallpapers ]]; then
     wallpapersTargetDirectory="$HOME/.local/share/backgrounds"
+
+    # making sure local directory for the wallpapers has been created
     if [[ ! -d $wallpapersTargetDirectory ]]; then
         mkdir -p $wallpapersTargetDirectory
     fi
