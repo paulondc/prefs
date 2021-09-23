@@ -109,7 +109,7 @@ sudo apt-get install libpq-dev libsqlite3-dev
 
 #### Install [Neovim](https://neovim.io):
 ```
-https://neovim.io
+sudo apt-get install neovim
 ```
 
 #### Install vim-plug:
