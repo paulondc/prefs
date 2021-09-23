@@ -179,7 +179,7 @@ if status is-interactive
 end
 ```
 
-#### Shell option B : Bash
+#### Shell option B: Bash
 Bashrc defaults (`~/.bashrc`)
 ```bash
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
