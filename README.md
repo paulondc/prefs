@@ -165,9 +165,7 @@ Fish defaults (`~/.config/fish/config.fish`):
 # getting rid of the welcome message
 export fish_greeting=""
 
-# making sure neovim is the default one (I personally like to use the alias 'v' for vim)
-alias vim='nvim'
-alias vi='nvim'
+# using the alias'v' for vim
 alias v='nvim'
 
 # making nvim the default viewer for man
