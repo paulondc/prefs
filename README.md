@@ -1,4 +1,4 @@
-# Backup of my vim preferences
+# Backup of my vim (and dev) preferences
 <p align="center">
   <img src="data/screenshot.png?v=1"/>
 </p>
@@ -168,11 +168,16 @@ export PYTHONDONTWRITEBYTECODE=1
   prompt = false
 ```
 
-#### Gnome preferences
+### Gnome preferences
 <p align="center">
   <img src="data/gnome-prefs-screenshot.png?v=1"/>
 </p>
-Download and run the script: [gnome-prefs](./gnome-prefs)
+
+Download and run the script: [gnome-prefs](./gnome-prefs) (found on this repo)
+```
+chmod +x gnome-prefs
+./gnome-prefs
+```
 
 ### Licence
 vim-prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
