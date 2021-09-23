@@ -1,0 +1,231 @@
+#!/bin/bash
+set -e
+
+#     .   .   . .
+#     :.:.:.:.:.:.  Backup of my gnome preferences (github.com/paulondc)
+#     ::::::::::::
+#     ::::::::::::  This script was mainly created to share my desktop settings with
+#     ::::::::::::  family & friends. Overall, the tweaks are a pretty vanilla.
+#   _/        / \: 
+#  \ \________\_/:  Hotkeys:
+#   \ ::::::::::::  <CTRL> + <ALT> + <T>   = launch terminal (github.com/kovidgoyal/kitty)
+#    \______        <SUPER> + <SPACE>      = launch window switcher/app launcher (github.com/davatorium/rofi)
+#           \       <SUPER> + <E>          = launch file manager
+#            \_     <SUPER> + <D>          = hide all windows
+#            \ \    <SUPER> + <LEFT|RIGHT> = switch virtual desktop
+#             \ \
+#              `-`
+
+# REQUIREMENTS
+minGnomeShellVer="40.1"
+apps="kitty rofi nautilus gnome-shell gedit wget"
+gnomeExtensions="user-theme dash-to-dock"
+cursorTheme="Adwaita"
+gtkTheme="Adwaita-dark"
+iconTheme="Papirus-Dark"
+userTheme="Matcha-dark-azul"
+
+# copyleft wallpapers of my and my brother's profiles in flickr
+# flickr.com/photos/64873777@N06 and flickr.com/photos/robertondc
+wallpaperBaseUrl="https://live.staticflickr.com/65535"
+wallpapers="49792001942_e28c74eabf 49792001197_b23fc47fc7 49791999817_d1e1cce824"
+wallpapers="$wallpapers 15565665436_fedffd22a4 15402744209_a033cf162b 49791692896_27301dc497"
+wallpapers="$wallpapers 50207042001_b58bd077a8 50207088591_2a2beb9b46"
+
+# command-line arguments
+usage="$(basename "$0") [-h] -- Setup the gnome desktop.
+where:
+    -h/--help           Show this help text
+    --no-themes         Don't apply the styles & themes tweaks (applied by default)
+    --no-hotkeys        Don't apply the hotkey tweaks (applied by default)
+    --no-wallpapers     Don't apply the wallpaper tweaks (applied by default)"
+
+applyThemes="1"
+applyHotkeys="1"
+applyWallpapers="1"
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+          -h|--help)
+          echo "$usage"
+          exit 1
+          ;;
+          --no-themes)
+          applyThemes=""
+          ;;
+          --no-hotkeys)
+          applyHotkeys=""
+          ;;
+          --no-wallpapers)
+          applyWallpapers=""
+          ;;
+          *)
+          # unknown option
+          ;;
+    esac
+    shift
+done
+
+# checking user level (don't run this as root)
+if [[ ! $EUID -ne 0 ]]; then
+    >&2 echo "Error, don't run this script as root"
+    exit 1
+fi
+
+# checking for required apps
+for appName in $apps; do
+    if ! $appName --version >/dev/null 2>&1; then
+        >&2 echo "Error, required app is not installed: $appName"
+        exit 1
+    fi
+done
+
+# checking for minimum gnome shell version
+currentGnomeShellVer=$(gnome-shell --version | cut -d " " -f 3)
+if (( $(echo "$currentGnomeShellVer < $minGnomeShellVer" | bc -l) )); then
+    >&2 echo "Error, unsupported gnome-shell version $currentGnomeShellVer, required version: $minGnomeShellVer"
+    exit 1
+fi
+
+# loading theme configuration
+if [[ ! -z $applyThemes ]]; then
+    # checking if the required extensions are installed
+    for extensionName in $gnomeExtensions; do
+        if [[ -z "$(gnome-extensions list | grep $extensionName@)" ]]; then
+    	>&2 echo "Error, gnome extension required is not installed: $extensionName"
+            exit 1
+        fi
+    done
+    
+    # checking if gnome themes are installed
+    themes="$cursorTheme $gtkTheme $userTheme"
+    for themeName in $themes; do
+        if [[ -d "/usr/share/themes/$themeName" || -d "$HOME/.themes/$themeName" ]]; then
+            continue
+        fi
+    
+        >&2 echo "Error, gnome theme required is not installed: $themeName"
+        exit 1
+    done
+    
+    # checking if icon package is installed
+    if ! [[ -d "/usr/share/icons/$iconTheme" || -d "$HOME/.local/share/$iconTheme" ]]; then
+        >&2 echo "Error, icon package required is not installed: $iconTheme"
+        exit 1
+    fi
+    
+    # applying
+    dconf load / <<EOT
+# Notification: disabling audio bell
+# (unfortunately some applications like to ignore this configuration...)
+[org/gnome/desktop/sound]
+event-sounds=false
+
+# Desktop: theme-icon settings for the shell (window manager)
+[org/gnome/desktop/interface]
+cursor-theme='$cursorTheme'
+gtk-theme='$gtkTheme'
+icon-theme='$iconTheme'
+
+# Desktop: top bar customization
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+enable-hot-corners=false
+
+# Desktop: setting the theme for gnome-shell-extension-user-theme
+[org/gnome/shell/extensions/user-theme]
+name='$userTheme'
+
+# Desktop: disabling the night mode
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+
+# Text editor: improving the readability on a dark theme
+[org/gnome/gedit/preferences/editor]
+display-line-numbers=true
+highlight-current-line=false
+scheme='classic'
+
+# File manager: using list view (aka ls -la) by default
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+EOT
+
+    # enabling extensions
+    for extensionName in $gnomeExtensions; do
+        gnome-extensions enable $(gnome-extensions list | grep $extensionName@)
+    done
+fi
+
+# loading hotkey configuration
+if [[ ! -z $applyHotkeys ]]; then
+    keybindings="org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    dconf load / <<EOT
+# Hotkey: removing the "super + space bar" hotkey which is by default associated with changing
+# the input source. This hotkey will be repurposed for showing rofi instead
+[org/gnome/desktop/wm/keybindings]
+switch-input-source=@as []
+switch-input-source-backward=@as []
+
+# Hotkey: replacing the "super + d" hotkey which by default switches the virtual desktop to show
+# the desktop instead
+[org/gnome/desktop/wm/keybindings]
+switch-to-workspace-right=@as []
+show-desktop=['<Super>d']
+
+# Hotkey: using the "super + left/right" hotkey to navigate in the virtual desktops
+[org/gnome/desktop/wm/keybindings]
+switch-to-workspace-left=['<Super>Left']
+switch-to-workspace-right=['<Super>Right']
+
+# Hotkey: creating custom entries
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/$keybindings/custom100/', '/$keybindings/custom101/', '/$keybindings/custom102/']
+
+# Hotkey: ctrl + alt + t = launch terminal
+[$keybindings/custom100]
+binding='<Primary><Alt>t'
+command='kitty'
+name='kitty'
+
+# Hotkey: super + space bar = launch launcher/window switcher (rofi)
+# note: this hotkey requires to restart to restart gnome-shell (or logout) to work properly
+[$keybindings/custom101]
+binding='<Super>space'
+command='rofi -combi-modi window,drun,ssh -show combi'
+name='rofi'
+
+# Hotkey: super + e = launch file manager
+[$keybindings/custom102]
+binding='<Super>e'
+command='nautilus'
+name='nautilus'
+EOT
+fi
+
+# making sure local directory for the wallpapers has been created
+if [[ ! -z $applyWallpapers ]]; then
+    wallpapersTargetDirectory="$HOME/.local/share/backgrounds"
+    if [[ ! -d $wallpapersTargetDirectory ]]; then
+        mkdir -p $wallpapersTargetDirectory
+    fi
+    
+    for wallpaperName in $wallpapers; do
+        wallpaperTarget="$wallpapersTargetDirectory/flickr_$wallpaperName.jpg"
+    
+        # downloading wallpaper if needed
+        if [[ ! -f $wallpaperTarget ]]; then
+            wget -q --show-progress $wallpaperBaseUrl/$wallpaperName"_o_d.jpg" -O $wallpaperTarget
+        fi
+    
+        # setting wallpaper (it provides a feedback effect as it loops (download) the wallpapers 
+        # through the list. The last wallpaper is the one that will be defined)
+        gsettings set org.gnome.desktop.background picture-uri "file://$wallpaperTarget"
+        gsettings set org.gnome.desktop.screensaver picture-uri "file://$wallpaperTarget"
+    done
+fi
+
+# restarting gnome-shell
+notify-send "Hold on: restarting gnome shell..."
+sleep 1
+killall -3 gnome-shell
