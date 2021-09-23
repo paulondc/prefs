@@ -122,7 +122,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 :PlugInstall
 ```
 
-#### Add json configuration for Coc (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
+#### Add json configuration for [Coc](https://github.com/neoclide/coc.nvim) (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
 
 This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column)
 ```json
