@@ -168,5 +168,11 @@ export PYTHONDONTWRITEBYTECODE=1
   prompt = false
 ```
 
+#### Gnome preferences
+<p align="center">
+  <img src="data/gnome-prefs-screenshot.png?v=1"/>
+</p>
+Download and run the script: [gnome-prefs](./gnome-prefs)
+
 ### Licence
 vim-prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
