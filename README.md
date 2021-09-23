@@ -2,7 +2,7 @@
 
 ### Desktop preferences (Gnome)
 <p align="center">
-  <img src="data/gnome-prefs-screenshot.png?v=1"/>
+  <img src="data/gnome-prefs-screenshot.png?v=2"/>
 </p>
 
 #### Install Rofi:
