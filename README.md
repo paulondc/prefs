@@ -182,7 +182,7 @@ end
 
 #### Shell option B : Bash
 Bashrc defaults (`~/.bashrc`)
-```
+```bash
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -195,7 +195,7 @@ export PYTHONDONTWRITEBYTECODE=1
 ```
 
 Inputrc defaults (`~/.inputrc`)
-```
+```bash
 # arrow up/down to auto-complete based on the history
 "\e[A":history-search-backward
 "\e[B":history-search-forward
