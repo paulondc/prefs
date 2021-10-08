@@ -24,9 +24,8 @@ https://github.com/kovidgoyal/kitty
 Install Kitty themes (`~/.config/kitty/themes`):
 ```
 https://github.com/dexpota/kitty-themes
-
-# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
 ```
+>  Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
 
 Make Kitty the default xterminal:
 ```bash
