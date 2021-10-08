@@ -3,10 +3,13 @@
   <img src="data/screenshot.png?v=1"/>
 </p>
 
-### Target installation
+#### Update config (`~/.config/nvim/init.vim`)
+
+Download [init.vim](https://raw.githubusercontent.com/paulondc/prefs/master/init.vim). You can get it by simply running the line bellow in your terminal :point_down:
 ```
-~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc/prefs/master/init.vim -O ~/.config/nvim/init.vim
 ```
+
 
 ### Requirements
 
