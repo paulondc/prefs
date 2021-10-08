@@ -4,7 +4,7 @@
 ```
 
 ### Edit Grub
-> Nvidia: There is a very good chance of bumping to an issue related with the nvidia-driver not being supported on the latest version of the kernel available on debianTesting. Therefore, after a kernel update if the nvidia-driver does not work properly at least there is a method to select the previous kernel version in a way that the selection will persist between reboot
+> Nvidia: There is a very good chance of bumping to an issue related with the nvidia-driver not being supported on the latest version of the kernel available on debianTesting. Therefore, after a kernel update if the nvidia-driver does not work properly at least there is a method to select the previous kernel version in a way that the selection will persist between reboots
 
 
 Edit the file `/etc/default/grub` to add the grub options below:
