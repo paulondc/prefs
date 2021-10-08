@@ -1,10 +1,6 @@
 <img src="data/debianLogo.png" width="256"/>
 
-## Installation instructions
-Use the default options
 
-
-## Post install
 ### Add my user to the sudoers list (requires a restart)
 ```
 /sbin/usermod -aG sudo <user>
