@@ -1,61 +1,18 @@
 # Backup of my preferences
 
-## Desktop (Gnome)
+## Linux
+<img src="data/debianLogo.png?v=1" width="128"/>
+
+[Debian Notes](debianNotes.md)
+
+## Desktop preferences
 <p align="center">
   <img src="data/gnome-prefs-screenshot.png?v=2"/>
 </p>
 
-#### Install [Rofi](https://github.com/davatorium/rofi):
+Download and run [gnome-prefs](https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs). You can get it by simply running the line bellow in your terminal :point_down:
 ```
-sudo apt-get install rofi
-```
-
-Rofi defaults (`~/.config/rofi/config.rasi`):
-```
-@theme "/usr/share/rofi/themes/android_notification.rasi"
-```
-
-####  Install [Kitty](https://sw.kovidgoyal.net/kitty):
-```
-https://github.com/kovidgoyal/kitty
-```
-
-Install Kitty themes (`~/.config/kitty/themes`):
-```
-https://github.com/dexpota/kitty-themes
-
-# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
-```
-
-Make Kitty the default xterminal:
-```bash
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
-sudo update-alternatives --config x-terminal-emulator
-```
-
-Add the config to kitty (`~/.config/kitty/kitty.conf` or `ctrl + shift + F2`):
-```
-include ./themes/Galaxy.conf
-
-font_family      JetBrains Mono
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-font_size        11.0
-
-enable_audio_bell no
-draw_minimal_borders yes
-tab_bar_style separator
-active_tab_background #eee
-
-map shift+enter send_text all \x1b[13;2u
-map ctrl+enter send_text all \x1b[13;5u
-```
-
-#### Download and run the [gnome-prefs](./gnome-prefs) script (found on this repo)
-```
-chmod +x gnome-prefs
-./gnome-prefs
+cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs && chmod +x gnome-prefs && ./gnome-prefs
 ```
 
 ## Vim
@@ -132,6 +89,43 @@ This configuration allows errors to be reported directly in the whole line of th
 ```
 
 ## Extra goodies
+
+####  Install [Kitty](https://sw.kovidgoyal.net/kitty):
+```
+https://github.com/kovidgoyal/kitty
+```
+
+Install Kitty themes (`~/.config/kitty/themes`):
+```
+https://github.com/dexpota/kitty-themes
+
+# Ps: download the repo as zip then only extract (drag n' drop) the themes directory under: ~/.config/kitty
+```
+
+Make Kitty the default xterminal:
+```bash
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/kitty 50
+sudo update-alternatives --config x-terminal-emulator
+```
+
+Add the config to kitty (`~/.config/kitty/kitty.conf` or `ctrl + shift + F2`):
+```
+include ./themes/Galaxy.conf
+
+font_family      JetBrains Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        11.0
+
+enable_audio_bell no
+draw_minimal_borders yes
+tab_bar_style separator
+active_tab_background #eee
+
+map shift+enter send_text all \x1b[13;2u
+map ctrl+enter send_text all \x1b[13;5u
+```
 
 #### Install debuggers:
 ```
