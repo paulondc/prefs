@@ -66,6 +66,13 @@ update-grub
 apt install nvidia-driver firmware-misc-nonfree
 ```
 
+### Finish
+```
+apt autoremove
+sudo reboot
+```
+
+## Gaming on Steam
 ### Add steam (for gaming if needed)
 ```
 dpkg --add-architecture i386
@@ -73,13 +80,7 @@ apt update
 apt install steam
 ```
 
-#### Install nvidia driver libs for i386 (if needed)
+### Install nvidia driver libs for i386 (if needed)
 ```
 apt install nvidia-driver-libs:i386
-```
-
-### Finish
-```
-apt autoremove
-sudo reboot
 ```
