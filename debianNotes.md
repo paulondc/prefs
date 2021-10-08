@@ -6,10 +6,10 @@ The instructions below were based on debian's default installation options
 
 ## Post installation
 ### Add my user to the sudoers list (if needed)
+> Requires a restart
 ```
 /sbin/usermod -aG sudo <user>
 ```
-> Requires a restart
 
 ### Edit sources list (skip this if not running on DebianTesting)
 > Running debian on testing: https://wiki.debian.org/DebianTesting
