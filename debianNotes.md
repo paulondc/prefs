@@ -16,7 +16,7 @@ GRUB_DISABLE_RECOVERY=true
 ### Edit sources list (skip this if you don't want to run on DebianTesting)
 > Running debian on testing mode: https://wiki.debian.org/DebianTesting
 
-Change the contents of the file `/etc/apt/sources.list` to:
+Replace the contents of the file `/etc/apt/sources.list` to:
 ```
 # Debian main repos
 deb https://deb.debian.org/debian/ testing main contrib non-free
