@@ -1,4 +1,4 @@
-<img src="data/debianLogo.png" width="512"/>
+<img src="data/debianLogo.png" width="256"/>
 
 ### Add my user to the sudoers list (requires a restart)
 ```
