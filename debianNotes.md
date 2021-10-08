@@ -1,3 +1,5 @@
+<img src="data/debianLogo.png" width="512"/>
+
 ### Add my user to the sudoers list (requires a restart)
 ```
 /sbin/usermod -aG sudo <user>
