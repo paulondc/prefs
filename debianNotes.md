@@ -1,4 +1,4 @@
-This document contains do
+
 
 ### Add my user to the sudoers list (requires a restart)
 ```
@@ -7,6 +7,9 @@ sudo reboot
 ```
 
 ### Edit Grub
+> Nvidia: There is a very good chance of bumping to an issue related with the nvidia-driver not being supported on the latest version of the kernel available on debianTesting. Therefore, after a kernel update if the nvidia-driver does not work properly at least there is a method to select the previous kernel version in a way that the selection will persist between reboot
+
+
 Edit the file `/etc/default/grub` to add the grub options below:
 ```
 # extending the timeout so it has enough time to plug an external keyboard
