@@ -5,6 +5,28 @@
 /sbin/usermod -aG sudo <user>
 ```
 
+### Edit sources list (skip this if not running on DebianTesting)
+> Running debian on testing: https://wiki.debian.org/DebianTesting
+
+Replace the contents of the file `/etc/apt/sources.list` to:
+```
+# Debian main repos
+deb https://deb.debian.org/debian/ testing main contrib non-free
+deb-src https://deb.debian.org/debian/ testing main contrib non-free
+
+deb https://deb.debian.org/debian-security testing-security main contrib non-free
+deb-src https://deb.debian.org/debian-security testing-security main contrib non-free
+
+deb https://deb.debian.org/debian/ testing-updates main contrib non-free
+deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
+```
+Ps: This also includes contrib and non-free packages
+
+#### Update debian to get into DebianTesting
+```
+apt update && apt dist-upgrade
+```
+
 ### Edit Grub
 > Nvidia: There is a very good chance of bumping to an issue related with the nvidia-driver not being supported on the latest version of the kernel available on debianTesting. Therefore, after a kernel update if the nvidia-driver does not work properly at least there is a method to select the previous kernel version in a way that the selection will persist between reboots
 
@@ -31,27 +53,6 @@ GRUB_DISABLE_RECOVERY=true
 #### Reload the grub with the changes above
 ```
 update-grub
-```
-
-### Edit sources list (skip this if you don't want to run on DebianTesting)
-> Running debian on testing mode: https://wiki.debian.org/DebianTesting
-
-Replace the contents of the file `/etc/apt/sources.list` to:
-```
-# Debian main repos
-deb https://deb.debian.org/debian/ testing main contrib non-free
-deb-src https://deb.debian.org/debian/ testing main contrib non-free
-
-deb https://deb.debian.org/debian-security testing-security main contrib non-free
-deb-src https://deb.debian.org/debian-security testing-security main contrib non-free
-
-deb https://deb.debian.org/debian/ testing-updates main contrib non-free
-deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
-```
-
-#### Update debian to get into DebianTesting
-```
-apt update && apt dist-upgrade
 ```
 
 ### Install nvidia-driver (if needed)
