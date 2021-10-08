@@ -29,7 +29,7 @@ deb https://deb.debian.org/debian/ testing-updates main contrib non-free
 deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
 ```
 
-#### Update debian to get to testing mode
+#### Update debian to get into DebianTesting
 ```
 apt update && apt dist-upgrade
 ```
