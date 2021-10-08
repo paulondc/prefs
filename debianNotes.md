@@ -1,7 +1,7 @@
 <img src="data/debianLogo.png" width="256"/>
 
 ## Installation
-Default options 
+The instructions below were based on debian's default installation options
 
 
 ## Post installation
