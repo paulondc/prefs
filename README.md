@@ -4,9 +4,7 @@
 [Debian Notes...](debianNotes.md)
 
 ## Desktop preferences
-<p align="center">
-  <img src="data/gnome-prefs-screenshot.png?v=2"/>
-</p>
+<img src="data/gnomePrefsScreenshot.png" width="480">
 
 Download and run [gnome-prefs](https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs). You can get it by simply running the line bellow in your terminal :point_down:
 ```
