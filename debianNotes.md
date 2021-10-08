@@ -24,6 +24,11 @@ GRUB_DISABLE_SUBMENU=y
 GRUB_DISABLE_RECOVERY=true
 ```
 
+#### Reload the grub with the changes above
+```
+update-grub
+```
+
 ### Edit sources list (skip this if you don't want to run on DebianTesting)
 > Running debian on testing mode: https://wiki.debian.org/DebianTesting
 
