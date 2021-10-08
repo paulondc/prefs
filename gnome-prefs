@@ -1,232 +1,689 @@
 #!/bin/bash
 set -e
 
-#     .   .   . .
-#     :.:.:.:.:.:.  Backup of my gnome preferences (github.com/paulondc/prefs)
-#     ::::::::::::
-#     ::::::::::::  This script was mainly created to share my desktop settings with
-#     ::::::::::::  family & friends. Overall, the tweaks are pretty vanilla.
-#   _/        / \: 
-#  \ \________\_/:  Hotkeys:
-#   \ ::::::::::::  <CTRL> + <ALT> + <T>   = launch terminal (github.com/kovidgoyal/kitty)
-#    \______        <SUPER> + <SPACE>      = launch window switcher/app launcher (github.com/davatorium/rofi)
-#           \       <SUPER> + <E>          = launch file manager
-#            \_     <SUPER> + <D>          = hide all windows
-#             \ \   <SUPER> + <LEFT|RIGHT> = switch virtual desktop
-#              \ \
-#               `-`
+#                             .....
+#                .....      .:#####.   Gnome Prefs
+#               .#####.   .#########.  https://github.com/paulondc/prefs
+#         .::. .#######. .##########.
+#       .#####..######. .#########:    This script was first created to facilitate the process of
+#   ... .#####. .####.  .########.     sharing my gnome preferences with family and friends.
+#  .####..####.  ''''    .####:.
+#  .####: '''' ......:::::.:::         Hotkeys:
+#   .###: ...:###############:.        <CTRL> + <ALT> + <T>          = launch terminal
+#    '''..####################:        <CTRL> + <ALT> + <LEFT/RIGHT> = navigate through the virtual desktops
+#      .######################:        <SUPER> + <SPACE>             = launch window switcher/app launcher (rofi)
+#     .######################:         <SUPER> + <E>                 = launch file manager
+#     :####################..          <SUPER> + <D>                 = show desktop
+#     :#################:.
+#     .##############..  ......
+#      :##########.     .######.
+#       :########.     .#######.
+#        :#########.::.#######:
+#         ':#################.
+#           '':############.
+#              ''''####:''
+#                  ''''
 
-# REQUIREMENTS
-minGnomeShellVer="40.1"
-apps="kitty rofi nautilus gnome-shell gedit wget"
-gnomeExtensions="user-theme dash-to-dock"
-cursorTheme="Adwaita"
-gtkTheme="Adwaita-dark"
-iconTheme="Papirus-Dark"
-userTheme="Matcha-dark-azul"
+__GNOME_MIN_VER="3.36"
+__REQUIRED_APPS="rofi nautilus gnome-terminal gnome-shell gedit wget git sassc msgfmt bc meson jq kvantummanager"
+__GNOME_CURRENT_VER=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d '.' -f 1,2)
+__CLI_USAGE="$(basename "$0") [-h] -- Gnome prefs.
 
-# copyleft wallpapers of my and my brother's profiles on flickr
-# flickr.com/photos/64873777@N06 and flickr.com/photos/robertondc
-wallpaperBaseUrl="https://live.staticflickr.com/65535"
-wallpapers="49792001942_e28c74eabf 49792001197_b23fc47fc7 49791999817_d1e1cce824"
-wallpapers="$wallpapers 15565665436_fedffd22a4 15402744209_a033cf162b 49791692896_27301dc497"
-wallpapers="$wallpapers 50207042001_b58bd077a8 50207088591_2a2beb9b46"
-
-# command-line arguments
-usage="$(basename "$0") [-h] -- Setup the gnome desktop.
 where:
-    -h/--help           Show this help text
-    --no-themes         Don't apply the styles & themes tweaks (applied by default)
-    --no-hotkeys        Don't apply the hotkey tweaks (applied by default)
-    --no-wallpapers     Don't apply the wallpaper tweaks (applied by default)"
+    -h/--help                 Show this help text
+    --no-themes               Don't apply the styles & themes tweaks (applied by default)
+    --no-hotkeys              Don't apply the hotkey tweaks (applied by default)
+    --no-fonts                Don't apply the font tweaks (applied by default)
+    --no-extensions           Don't apply the load of gnome extensions (applied by default)
+    --no-wallpapers           Don't apply the wallpaper tweaks (applied by default)
+    --dont-download-missing   Don't download missing requirements"
 
-applyThemes="1"
-applyHotkeys="1"
-applyWallpapers="1"
-while [[ $# -gt 0 ]]; do
-    key="$1"
-    case $key in
-          -h|--help)
-          echo "$usage"
-          exit 1
-          ;;
-          --no-themes)
-          applyThemes=""
-          ;;
-          --no-hotkeys)
-          applyHotkeys=""
-          ;;
-          --no-wallpapers)
-          applyWallpapers=""
-          ;;
-          *)
-          # unknown option
-          ;;
-    esac
-    shift
-done
+# The configuration below can be overridden through environment variables in case
+# you want to tweak the settings performed during cli.
+# Theme config
+CONFIG_CURSOR_THEME="${CONFIG_CURSOR_THEME:-Adwaita}"
+CONFIG_GTK_THEME="${CONFIG_GTK_THEME:-Adwaita-dark}"
+CONFIG_ICON_THEME="${CONFIG_ICON_THEME:-Papirus-Dark}"
+CONFIG_QT_THEME="${CONFIG_QT_THEME:-KvGnomeDark}"
+CONFIG_GEDIT_THEME="${CONFIG_GEDIT_THEME:-oblivion}"
+CONFIG_ROFI_THEME="${CONFIG_ROFI_THEME:-android_notification}"
 
-# checking user level (don't run this as root)
-if [[ ! $EUID -ne 0 ]]; then
-    >&2 echo "Error, don't run this script as root"
-    exit 1
+# Font config
+CONFIG_PROPORTIONAL_FONT="${CONFIG_PROPORTIONAL_FONT:-DejaVu Sans}"
+CONFIG_MONOSPACE_FONT="${CONFIG_MONOSPACE_FONT:-DejaVu Sans Mono}"
+CONFIG_FONT_SIZE="${CONFIG_FONT_SIZE:-11}"
+CONFIG_FONT_ANTIALIASING="${CONFIG_FONT_ANTIALIASING:-rgba}"
+CONFIG_FONT_HINTING="${CONFIG_FONT_HINTING:-full}"
+
+# Hotkeys config
+CONFIG_HOTKEY_SHOW_DESKTOP="${CONFIG_HOTKEY_SHOW_DESKTOP:-<Super>d}"
+CONFIG_HOTKEY_SWITCH_NEXT_VIRTUAL_DESKTOP="${CONFIG_HOTKEY_SWITCH_NEXT_VIRTUAL_DESKTOP:-<Primary><Alt>Left}"
+CONFIG_HOTKEY_SWITCH_PREV_VIRTUAL_DESKTOP="${CONFIG_HOTKEY_SWITCH_PREV_VIRTUAL_DESKTOP:-<Primary><Alt>Right}"
+CONFIG_HOTKEY_LAUNCH_TERMINAL="${CONFIG_HOTKEY_LAUNCH_TERMINAL:-<Primary><Alt>t}"
+CONFIG_HOTKEY_LAUNCH_ROFI="${CONFIG_HOTKEY_LAUNCH_ROFI:-<Super>space}"
+CONFIG_HOTKEY_LAUNCH_FILE_MANAGER="${CONFIG_HOTKEY_LAUNCH_FILE_MANAGER:-<Super>e}"
+
+# Extensions config
+CONFIG_DOCK_LOCATION="${CONFIG_DOCK_LOCATION:-BOTTOM}"
+if [[ -z "$CONFIG_GNOME_EXTENSIONS" ]]; then
+    CONFIG_GNOME_EXTENSIONS="dash-to-dock"
+    CONFIG_GNOME_EXTENSIONS+=" appindicatorsupport"
 fi
 
-# checking for required apps
-for appName in $apps; do
-    if ! $appName --version >/dev/null 2>&1; then
-        >&2 echo "Error, required app is not installed: $appName"
-        exit 1
+# Wallpapers config
+if [[ -z "$CONFIG_URL_WALLPAPERS" ]]; then
+    # copyleft wallpapers from me and my brother profiles on flickr:
+    # flickr.com/photos/64873777@N06 and flickr.com/photos/robertondc
+    CONFIG_URL_WALLPAPERS="https://live.staticflickr.com/1/49792001942_e28c74eabf_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/49792001197_b23fc47fc7_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/49791999817_d1e1cce824_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/15565665436_fedffd22a4_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/15402744209_a033cf162b_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/49791692896_27301dc497_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/50207042001_b58bd077a8_o_d.jpg"
+    CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/50207088591_2a2beb9b46_o_d.jpg"
+fi
+
+# Apply theming for Qt applications.
+#
+# This is necessary to provide a nice integration between "qt/kde apps" and gnome. Otherwise,
+# qt apps may look completely different from gtk ones. For this process kvantum is used to
+# manage the theming on qt side.
+#
+# $1 - Name of the kvantum style.
+#
+# Example:
+#   applyQtTheme "styleName"
+#
+# Returns nothing.
+applyQtTheme () {
+    local styleName="$1"
+
+    if [[ $(cat $HOME/.profile | grep -c "export QT_STYLE_OVERRIDE=kvantum") == "0" ]]; then
+        echo "export QT_STYLE_OVERRIDE=kvantum" >> $HOME/.profile
     fi
-done
 
-# checking for minimum gnome shell version
-currentGnomeShellVer=$(gnome-shell --version | cut -d " " -f 3)
-if (( $(echo "$currentGnomeShellVer < $minGnomeShellVer" | bc -l) )); then
-    >&2 echo "Error, unsupported gnome-shell version $currentGnomeShellVer, required version: $minGnomeShellVer"
-    exit 1
-fi
+    kvantummanager --set $styleName
+}
 
-# loading theme configuration
-if [[ ! -z $applyThemes ]]; then
-    # checking if the required extensions are installed
-    for extensionName in $gnomeExtensions; do
-        if [[ -z "$(gnome-extensions list | grep $extensionName@)" ]]; then
-    	>&2 echo "Error, gnome extension required is not installed: $extensionName"
+# Apply theming for Rofi (window switcher & application launcher).
+#
+# $1 - Name of the rofi theme.
+#
+# Example:
+#   applyRofiTheme "themeName"
+#
+# Returns nothing.
+applyRofiTheme () {
+    local themeName="$1"
+    local rofiConfigFullPath="$HOME/.config/rofi/config.rasi"
+
+    if [[ ! -f "$rofiConfigFullPath" ]]; then
+        mkdir -p $(dirname $rofiConfigFullPath)
+        echo "@theme \"/usr/share/rofi/themes/$themeName.rasi\"" > $rofiConfigFullPath
+    fi
+}
+
+# Apply theming for Gedit (text editor).
+#
+# $1 - Name of the rofi theme.
+#
+# Example:
+#   applyGeditTheme "themename"
+#
+# Returns nothing.
+applyGeditTheme () {
+    local scheme="$1"
+
+    dconf load / <<eot
+    # text editor: improving the readability on a dark theme
+    [org/gnome/gedit/preferences/editor]
+    display-line-numbers=true
+    highlight-current-line=false
+    scheme='$scheme'
+    insert-spaces=true
+    tabs-size=uint32 4
+eot
+}
+
+# Apply the default fonts on gnome.
+#
+# $1 - proportional font name
+# $2 - monospace font name
+# $3 - font size
+# $4 - font antialiasing: rgba (subpixel), grayscale, none
+# $5 - font hinting: full, medium, slight, none
+#
+# Example:
+#   applyGnomeFonts "14" "proportional" "monospace"
+#
+# Returns nothing.
+applyGnomeFonts () {
+    local proportionalFont="$1"
+    local monospaceFont="$2"
+    local fontSize="$3"
+    local fontAntialiasing="$4"
+    local fontHinting="$5"
+
+    # checking for fonts
+    for fontName in "$proportionalFont" "$monospaceFont"; do
+        if [[ $(fc-list | grep -c "$fontName") == "0" ]]; then
+            >&2 echo "Error, missing required font: $fontName"
             exit 1
         fi
     done
-    
+
+    dconf load / <<eot
+    # Desktop: theme-icon settings for the shell (window manager)
+    [org/gnome/desktop/interface]
+    document-font-name='$proportionalFont $fontSize'
+    font-name='$proportionalFont $fontSize'
+    monospace-font-name='$monospaceFont $fontSize'
+    font-antialiasing='$fontAntialiasing'
+    font-hinting='$fontHinting'
+
+    # Desktop: adding minimize maximize and close buttons to windows
+    [org/gnome/desktop/wm/preferences]
+    titlebar-font='$proportionalFont Bold $fontSize'
+eot
+}
+
+# Apply the gnome themes.
+#
+# $1 - cursor theme name
+# $2 - gtk theme name
+# $3 - icon theme name
+# $4 - download missing icon theme
+#
+# Example:
+#   applyGnomeTheme "cursorTheme" "gtkThemeName" "iconThemeName" "1"
+#
+# Returns nothing.
+applyGnomeTheme () {
+    local cursorTheme="$1"
+    local gtkTheme="$2"
+    local iconTheme="$3"
+    local downloadMissing="$4"
+
     # checking if gnome themes are installed
-    themes="$cursorTheme $gtkTheme $userTheme"
-    for themeName in $themes; do
+    for themeName in "$cursorTheme" "$gtkTheme"; do
         if [[ -d "/usr/share/themes/$themeName" || -d "$HOME/.themes/$themeName" ]]; then
             continue
         fi
-    
+
         >&2 echo "Error, gnome theme required is not installed: $themeName"
         exit 1
     done
-    
+
     # checking if icon package is installed
-    if ! [[ -d "/usr/share/icons/$iconTheme" || -d "$HOME/.local/share/$iconTheme" ]]; then
-        >&2 echo "Error, icon package required is not installed: $iconTheme"
-        exit 1
+    if ! [[ -d "/usr/share/icons/$iconTheme" || -d "$HOME/.local/share/icons/$iconTheme" ]]; then
+        if [[ "$downloadMissing" == "1" ]]; then
+            wget -qO- https://git.io/papirus-icon-theme-install |\
+                sed 's/wget/wget -q --no-verbose/g' |\
+                DESTDIR="$HOME/.local/share/icons" sh
+
+            for i in "${PIPESTATUS[@]}"; do
+                if [[ $i == "0" ]]; then
+                    continue
+                fi
+
+                >&2 echo "Error, on installing icon theme: $iconTheme"
+                exit 1
+            done
+        else
+            >&2 echo "Error, icon package required is not installed: $iconTheme"
+            exit 1
+        fi
     fi
-    
-    # applying
+
     dconf load / <<EOT
-# Notification: disabling audio bell
-# (unfortunately some applications like to ignore this configuration...)
-[org/gnome/desktop/sound]
-event-sounds=false
+    # Notification: disabling audio bell
+    [org/gnome/desktop/sound]
+    event-sounds=false
 
-# Desktop: theme-icon settings for the shell (window manager)
-[org/gnome/desktop/interface]
-cursor-theme='$cursorTheme'
-gtk-theme='$gtkTheme'
-icon-theme='$iconTheme'
+    # Desktop: theme-icon settings for the shell (window manager)
+    [org/gnome/desktop/interface]
+    cursor-theme='$cursorTheme'
+    gtk-theme='$gtkTheme'
+    icon-theme='$iconTheme'
 
-# Desktop: top bar customization
-[org/gnome/desktop/interface]
-clock-show-weekday=true
-enable-hot-corners=false
+    # Desktop: top bar customization
+    [org/gnome/desktop/interface]
+    clock-show-weekday=true
+    enable-hot-corners=false
 
-# Desktop: setting the theme for gnome-shell-extension-user-theme
-[org/gnome/shell/extensions/user-theme]
-name='$userTheme'
+    # Desktop: adding minimize maximize and close buttons to windows
+    [org/gnome/desktop/wm/preferences]
+    button-layout='appmenu:minimize,maximize,close'
 
-# Desktop: disabling the night mode
-[org/gnome/settings-daemon/plugins/color]
-night-light-enabled=false
+    # Desktop: disabling the night mode
+    [org/gnome/settings-daemon/plugins/color]
+    night-light-enabled=false
 
-# Text editor: improving the readability on a dark theme
-[org/gnome/gedit/preferences/editor]
-display-line-numbers=true
-highlight-current-line=false
-scheme='classic'
-
-# File manager: using list view (aka ls -la) by default
-[org/gnome/nautilus/preferences]
-default-folder-viewer='list-view'
+    # File manager: using list view (aka ls -la) by default
+    [org/gnome/nautilus/preferences]
+    default-folder-viewer='list-view'
 EOT
+}
 
-    # enabling extensions
-    for extensionName in $gnomeExtensions; do
-        gnome-extensions enable $(gnome-extensions list | grep $extensionName@)
+# Apply the hotkeys on gnome.
+#
+# $1 - show desktop hotkey
+# $2 - switch to the next virtual desktop hotkey
+# $3 - switch to the previous virtual desktop hotkey
+# $4 - launch terminal hotkey
+# $5 - launch rofi hotkey
+# $6 - launch file manager hotkey
+#
+# Example:
+#   applyGnomeHotkeys "cursorTheme" "gtkThemeName" "iconThemeName" ...
+#
+# Returns nothing.
+applyGnomeHotkeys () {
+    local showDesktop="$1"
+    local switchToNextVirtualDesktop="$2"
+    local switchToPreviousVirtualDesktop="$3"
+    local launchTerminal="$4"
+    local launchRofi="$5"
+    local launchFileManager="$6"
+    local keybindings="org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+
+    dconf load / <<EOT
+    # Hotkey: removing the "super + space bar" hotkey which is by default associated with changing
+    # the input source. This hotkey will be repurposed for showing rofi instead
+    [org/gnome/desktop/wm/keybindings]
+    switch-input-source=@as []
+    switch-input-source-backward=@as []
+
+    # Hotkey: replacing "super + d" which by default switches the virtual desktop to show
+    # the desktop instead
+    [org/gnome/desktop/wm/keybindings]
+    switch-to-workspace-right=@as []
+    show-desktop=['$showDesktop']
+
+    # Hotkey: using "ctrl + alt + left/right" to navigate through the virtual desktops
+    [org/gnome/desktop/wm/keybindings]
+    switch-to-workspace-left=['$switchToNextVirtualDesktop']
+    switch-to-workspace-right=['$switchToPreviousVirtualDesktop']
+
+    # Hotkey: creating custom entries
+    [org/gnome/settings-daemon/plugins/media-keys]
+    custom-keybindings=['/$keybindings/custom100/', '/$keybindings/custom101/', '/$keybindings/custom102/']
+
+    # Hotkey: ctrl + alt + t = launch terminal
+    [$keybindings/custom100]
+    binding='$launchTerminal'
+    command='gnome-terminal'
+    name='terminal'
+
+    # Hotkey: super + space bar = launch launcher/window switcher (rofi)
+    # note: this hotkey requires to restart to restart gnome-shell (or logout) to work properly
+    [$keybindings/custom101]
+    binding='$launchRofi'
+    command='rofi -combi-modi window,drun,ssh -show combi'
+    name='rofi'
+
+    # Hotkey: super + e = launch file manager
+    [$keybindings/custom102]
+    binding='$launchFileManager'
+    command='nautilus'
+    name='nautilus'
+EOT
+}
+
+# Apply the gnome extensions.
+#
+# $1 - extension name separated by space
+# $3 - location for the dock: BOTTOM, TOP, LEFT and RIGHT
+# $3 - download missing extension
+#
+# Example:
+#   applyGnomeExtensions "extensionA extensionB" "BOTTOM" "1"
+#
+# Returns nothing.
+applyGnomeExtensions () {
+    local extensions="$1"
+    local dockLocation="$2"
+    local downloadMissing="$3"
+    local enableExtensionsCmd=""
+
+    for extensionName in $extensions; do
+        enableExtensionsCmd="gnome-extensions enable \$(gnome-extensions list | grep $extensionName@);$enableExtensionsCmd"
+
+        # the dash-to-dock extension needs some tweaks after it has been enabled
+        if [[ $extensionName == "dash-to-dock" ]]; then
+            enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position \\\"'$dockLocation'\\\";"
+            enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/force-straight-corner false;"
+            enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true;"
+        fi
+
+        if [[ ! -z "$(gnome-extensions list | grep $extensionName@)" ]]; then
+            continue
+        fi
+
+        if [[ "$downloadMissing" == "1" ]]; then
+            (
+                echo "Installing gnome extension: $extensionName"
+
+                # changing the CWD for the installation context of the extension...
+                local temporaryDirectory=$(mktemp -d --suffix "_$extensionName")
+                cd $temporaryDirectory
+
+                if [[ $extensionName == "dash-to-dock" ]]; then
+                    git clone --quiet https://github.com/micheleg/dash-to-dock.git
+                    cd dash-to-dock
+
+                    # backward compatibility with older gnome versions
+                    if [[ $__GNOME_CURRENT_VER == "3."* ]]; then
+                        git checkout --quiet gnome-3.38
+                    fi
+
+                    make
+                    make install
+                elif [[ $extensionName == "appindicatorsupport" ]]; then
+                    local buildTempList=$(mktemp -d --suffix "_g-s-appindicators-build")
+                    git clone --quiet https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+                    meson gnome-shell-extension-appindicator $buildTempList
+                    ninja -C $buildTempList install
+                else
+                    >&2 echo "Error on downloading for gnome extension is not supported: $extensionName"
+                    exit 1
+                fi
+            ) || {
+                >&2 echo "Error on installing gnome extension: $extensionName"
+                exit 1
+            }
+        else
+            >&2 echo "Error, gnome extension required is not installed: $extensionName"
+            exit 1
+        fi
     done
-fi
 
-# loading hotkey configuration
-if [[ ! -z $applyHotkeys ]]; then
-    keybindings="org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
-    dconf load / <<EOT
-# Hotkey: removing the "super + space bar" hotkey which is by default associated with changing
-# the input source. This hotkey will be repurposed for showing rofi instead
-[org/gnome/desktop/wm/keybindings]
-switch-input-source=@as []
-switch-input-source-backward=@as []
+    if [[ -z "$enableExtensionsCmd" ]]; then
+        return
+    fi
 
-# Hotkey: replacing the "super + d" hotkey which by default switches the virtual desktop to show
-# the desktop instead
-[org/gnome/desktop/wm/keybindings]
-switch-to-workspace-right=@as []
-show-desktop=['<Super>d']
+    # Enabling extensions, only after restarting gnome-shell the new extensions are visible therefore,
+    # only creating a trigger to activate them in the next login session. This is necessary because currently
+    # there is no safe way to restart gnome-shell when running on wayland (on x11 it would not be a problem
+    # but, keeping a simple implementation that works for both display servers)
+    local prefixCommand="echo -e 'Please wait...'; sleep 3"
+    local disableAllExtensionsCmd='for ext in $(gnome-extensions list); do gnome-extensions disable $ext; done'
+    local gnomePrefsTrigger="$HOME/.config/autostart/gnomePrefsTrigger.desktop"
+    local execCmd="bash -c \"$prefixCommand; rm $gnomePrefsTrigger; $disableAllExtensionsCmd; $enableExtensionsCmd\""
+    local entryContent="[Desktop Entry]\nName=gnomePrefsTrigger\nTerminal=true\nType=Application\nExec=$execCmd"
+    mkdir -p $(dirname $gnomePrefsTrigger)
+    echo -e $entryContent > $gnomePrefsTrigger
+}
 
-# Hotkey: using the "super + left/right" hotkey to navigate in the virtual desktops
-[org/gnome/desktop/wm/keybindings]
-switch-to-workspace-left=['<Super>Left']
-switch-to-workspace-right=['<Super>Right']
-
-# Hotkey: creating custom entries
-[org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/$keybindings/custom100/', '/$keybindings/custom101/', '/$keybindings/custom102/']
-
-# Hotkey: ctrl + alt + t = launch terminal
-[$keybindings/custom100]
-binding='<Primary><Alt>t'
-command='kitty'
-name='kitty'
-
-# Hotkey: super + space bar = launch launcher/window switcher (rofi)
-# note: this hotkey requires to restart to restart gnome-shell (or logout) to work properly
-[$keybindings/custom101]
-binding='<Super>space'
-command='rofi -combi-modi window,drun,ssh -show combi'
-name='rofi'
-
-# Hotkey: super + e = launch file manager
-[$keybindings/custom102]
-binding='<Super>e'
-command='nautilus'
-name='nautilus'
-EOT
-fi
-
-if [[ ! -z $applyWallpapers ]]; then
-    wallpapersTargetDirectory="$HOME/.local/share/backgrounds"
+# Download & apply the wallpapers to gnome.
+#
+# $@ - url for the wallpapers separated by space.
+#
+# Example:
+#   applyUrlWallpapers "https://spomeurl.com/wallpaper.jpg" "https://spomeurl.com/wallpaper2.jpg"
+#
+# Returns nothing.
+applyUrlWallpapers () {
+    local wallpapers="$1"
+    local downloadMissing="$2"
+    local wallpapersTargetDirectory="$HOME/.local/share/backgrounds"
 
     # making sure local directory for the wallpapers has been created
-    if [[ ! -d $wallpapersTargetDirectory ]]; then
-        mkdir -p $wallpapersTargetDirectory
-    fi
-    
-    for wallpaperName in $wallpapers; do
-        wallpaperTarget="$wallpapersTargetDirectory/flickr_$wallpaperName.jpg"
-    
+    mkdir -p $wallpapersTargetDirectory
+
+    for wallpaperUrl in $wallpapers; do
+        wallpaperBaseName=$(basename $wallpaperUrl)
+        wallpaperTarget="$wallpapersTargetDirectory/$wallpaperBaseName"
+
         # downloading wallpaper if needed
         if [[ ! -f $wallpaperTarget ]]; then
-            wget -q --show-progress $wallpaperBaseUrl/$wallpaperName"_o_d.jpg" -O $wallpaperTarget
-        fi
-    
-        # setting wallpaper (it provides a feedback effect as it loops (download) the wallpapers 
-        # through the list. The last wallpaper is the one that will be defined)
-        gsettings set org.gnome.desktop.background picture-uri "file://$wallpaperTarget"
-        gsettings set org.gnome.desktop.screensaver picture-uri "file://$wallpaperTarget"
-    done
-fi
+            if [[ $downloadMissing != "1" ]]; then
+                continue
+            fi
 
-# restarting gnome-shell
-notify-send "Hold on: restarting gnome shell..."
-sleep 1
-killall -3 gnome-shell
+            echo "Downloading wallpaper $wallpaperUrl"
+            wget -q $wallpaperUrl -O $wallpaperTarget
+        fi
+
+        # setting wallpaper (it provides a feedback effect as it loops (download) the wallpapers
+        # through the list. The last wallpaper is the one that will be defined)
+        dconf write /org/gnome/desktop/background/picture-uri "'file://$wallpaperTarget'"
+        dconf write /org/gnome/desktop/screensaver/picture-uri "'file://$wallpaperTarget'"
+    done
+}
+
+# Check for requirements.
+#
+# This function checks for system requirements, such as packages and gnome version.
+#
+# $@ - required apps/packages separated by space.
+#
+# Example:
+#   checkRequirements "packageA" "packageB"
+#
+# Returns nothing.
+checkRequirements () {
+    local requiredApps="$@"
+
+    # checking user level (don't run this as root)
+    if [[ ! $EUID -ne 0 ]]; then
+        >&2 echo "Error, don't run this script as root"
+        exit 1
+    fi
+
+    if (( $(echo "$__GNOME_CURRENT_VER < $__GNOME_MIN_VER" | bc -l) )); then
+        >&2 echo "Error, unsupported gnome-shell version $__GNOME_CURRENT_VER, required version: $__GNOME_MIN_VER"
+        exit 1
+    fi
+
+    missingDependencies=""
+    for appName in $requiredApps; do
+        if $appName --version >/dev/null 2>&1; then
+            continue
+        fi
+
+        if [[ "$appName" == "msgfmt" ]]; then
+            missingDependencies="$missingDependencies gettext"
+        elif [[ "$appName" == "kvantummanager" ]]; then
+            if kvantummanager --version >/dev/null 2>&1; then
+                continue
+            fi
+
+            # debian based
+            if apt --version >/dev/null 2>&1; then
+                missingDependencies="$missingDependencies qt5-style-kvantum qt5-style-kvantum-themes"
+            # arch based
+            elif pacman --version >/dev/null 2>&1; then
+                missingDependencies="$missingDependencies kvantum-qt5"
+            # redhat based
+            elif dnf --version  >/dev/null 2>&1; then
+                missingDependencies="$missingDependencies kvantum"
+            else
+                >&2 echo "Error, don't know how to resolve package name for missing dependency: $appName"
+                exit 1
+            fi
+        # otherwise, the package name is the same name as the app
+        else
+            missingDependencies="$missingDependencies $appName"
+        fi
+    done
+
+    if ! [[ -z "$missingDependencies" ]]; then
+        >&2 echo -e "Error, missing required packages on the system (please install them):\e[1m$missingDependencies\e[0m"
+        exit 1
+    fi
+}
+
+# Wrapper used by the cli to apply the configuration.
+#
+# $1 - function name to be executed though this wrapper
+# $2(...) - arguments passed to the execution of the function
+#
+# Example:
+#   __applyConfig "someFunction" "argumentA" "argumentB" "argumentC"
+#
+# Returns nothing.
+__applyConfig () {
+    local functionName="$1"
+    # shifting to get all the remaining args...
+    shift
+
+    # using the positional args instead querying all args through "$@" due
+    # quoted values that may contain spaces
+    local functionArgs=()
+    while (( "$#" )); do
+        functionArgs+=("$1")
+        shift
+    done
+
+    local exitCode=0
+    local functionDisplay=$(echo "$functionName" | sed 's/\([A-Z]\)/ \1/g')
+    echo -e "\e[1m- ${functionDisplay^}\e[0m"
+
+    ($functionName "${functionArgs[@]}") > >(trap "" INT TERM; sed "s/^/  [LOG] /g") || {
+        >&2 echo -e "Error, occurred during the execution of: $functionName (exit code $?)"
+        exitCode="$?"
+    }
+
+    trap - INT TERM
+    if [[ "$exitCode" != "0" ]]; then
+        exit "$exitCode"
+    fi
+}
+
+# Auxiliary function that shows a banner at the end of the process.
+#
+# Example:
+#   __showCompletedBanner
+#
+# Returns nothing.
+__showCompletedBanner () {
+    # if everything went well (no errors), printing out a banner telling to
+    # restart the gnome session. Making sure IFS is only modified inside
+    # of a subshell.
+    (
+        IFS=''
+        local currentLineIndex="0"
+        while read -r currentLine; do
+            if [[ "$currentLineIndex" == "12" ]]; then
+                currentLine+=" \e[1m\e[7mPlease logout/login back again\e[0m"
+            elif [[ "$currentLineIndex" == "13" ]]; then
+                # intentionally the period is going get a random color too
+                currentLine+=" \e[1m   \e[7mto complete the process.\e[0m"
+            fi
+
+            # whenever the characters '.' and ':' are found they are gonna get
+            # a random color
+            local newLine=""
+            for (( charIndex=0; charIndex <${#currentLine}; charIndex++ )); do
+                local char="${currentLine:$charIndex:1}"
+                if [[ "$char" == '.'  || "$char" == "'" || "$char" == ':' ]]; then
+                    newLine+="\e[1m\e[3$(( $RANDOM * 6 / 32767 + 1 ))m$char\e[0m"
+                else
+                    newLine+="$char"
+                fi
+            done
+
+            # printing banner line by line
+            echo -e "$newLine"
+            currentLineIndex=$((currentLineIndex+1))
+
+        done <<<$(cat $(readlink -f $0) | head -25 | tail -n +3 | cut -c 3-39)
+    )
+}
+
+# Parse the options and execute the command-line.
+#
+# Example:
+#   __runCli
+#
+# Returns nothing.
+__runCli () {
+    local runThemes="1"
+    local runHotkeys="1"
+    local runFonts="1"
+    local runExtensions="1"
+    local runWallpapers="1"
+    local runDownloadWhenMissing="1"
+
+    for argv in "$@"; do
+        case $argv in
+            -h|--help)
+                echo "$__CLI_USAGE"
+                exit 1
+                ;;
+            --no-themes)
+                runThemes="0"
+                ;;
+            --no-hotkeys)
+                runHotkeys="0"
+                ;;
+            --no-fonts)
+                runFonts="0"
+                ;;
+            --no-extensions)
+                runExtensions="0"
+                ;;
+            --no-wallpapers)
+                runWallpapers="0"
+                ;;
+            --dont-download-missing)
+                runDownloadWhenMissing="0"
+                ;;
+            *)
+                >&2 echo "unknown option: $1"
+                exit 1
+                ;;
+        esac
+    done
+
+    # making sure the system has all the dependencies
+    checkRequirements "$__REQUIRED_APPS"
+
+    # applying changes
+    if [[ "$runThemes" == "1" ]]; then
+        __applyConfig "applyQtTheme" "$CONFIG_QT_THEME"
+        __applyConfig "applyRofiTheme" "$CONFIG_ROFI_THEME"
+        __applyConfig "applyGeditTheme" "$CONFIG_GEDIT_THEME"
+        __applyConfig "applyGnomeTheme" "$CONFIG_CURSOR_THEME"\
+            "$CONFIG_GTK_THEME"\
+            "$CONFIG_ICON_THEME"\
+            "$runDownloadWhenMissing"
+    fi
+
+    if [[ "$runFonts" == "1" ]]; then
+        __applyConfig "applyGnomeFonts" "$CONFIG_PROPORTIONAL_FONT"\
+            "$CONFIG_MONOSPACE_FONT"\
+            "$CONFIG_FONT_SIZE"\
+            "$CONFIG_FONT_ANTIALIASING"\
+            "$CONFIG_FONT_HINTING"
+    fi
+
+    if [[ "$runHotkeys" == "1" ]]; then
+        __applyConfig "applyGnomeHotkeys" "$CONFIG_HOTKEY_SHOW_DESKTOP"\
+            "$CONFIG_HOTKEY_SWITCH_NEXT_VIRTUAL_DESKTOP"\
+            "$CONFIG_HOTKEY_SWITCH_PREV_VIRTUAL_DESKTOP"\
+            "$CONFIG_HOTKEY_LAUNCH_TERMINAL"\
+            "$CONFIG_HOTKEY_LAUNCH_ROFI"\
+            "$CONFIG_HOTKEY_LAUNCH_FILE_MANAGER"
+    fi
+
+    if [[ "$runExtensions" == "1" ]]; then
+        __applyConfig "applyGnomeExtensions" "$CONFIG_GNOME_EXTENSIONS"\
+            "$CONFIG_DOCK_LOCATION"\
+            "$runDownloadWhenMissing"
+    fi
+
+    if [[ "$runWallpapers" == "1" ]]; then
+        __applyConfig "applyUrlWallpapers" "$CONFIG_URL_WALLPAPERS"\
+            "$runDownloadWhenMissing"
+    fi
+
+    __showCompletedBanner
+}
+
+# when script is being executed (rather than sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    __runCli $@
+fi
