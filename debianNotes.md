@@ -1,3 +1,5 @@
+This document contains do
+
 ### Add my user to the sudoers list (requires a restart)
 ```
 /sbin/usermod -aG sudo <user>
