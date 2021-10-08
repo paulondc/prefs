@@ -73,7 +73,7 @@ sudo reboot
 ```
 
 ## Gaming on Steam
-### Add steam (for gaming if needed)
+### Add steam
 ```
 dpkg --add-architecture i386
 apt update
