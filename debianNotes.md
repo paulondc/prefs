@@ -14,7 +14,7 @@ The instructions below were based on debian's default installation options
 ### Edit sources list (skip this if not running on DebianTesting)
 > Running debian on testing: https://wiki.debian.org/DebianTesting
 
-Replace the whole contents of the file `/etc/apt/sources.list` to:
+Replace the whole contents of the file `/etc/apt/sources.list` with:
 ```
 # Debian main repos
 deb https://deb.debian.org/debian/ testing main contrib non-free
