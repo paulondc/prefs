@@ -1,10 +1,15 @@
 <img src="data/debianLogo.png" width="256"/>
 
+## Installation
+Default options 
 
-### Add my user to the sudoers list (requires a restart)
+
+## Post installation
+### Add my user to the sudoers list (if needed)
 ```
 /sbin/usermod -aG sudo <user>
 ```
+> Requires a restart
 
 ### Edit sources list (skip this if not running on DebianTesting)
 > Running debian on testing: https://wiki.debian.org/DebianTesting
