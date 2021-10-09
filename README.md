@@ -3,16 +3,16 @@
 ## Linux
 [Debian Notes...](debianNotes.md)
 
-## Desktop preferences
+## Vim
+[Vim Notes...](vimNotes.md)
+
+## Desktop
 <img src="data/gnomePrefsScreenshot.png" width="480">
 
 Download and run [gnome-prefs](https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs). You can get it by simply running the line bellow on the terminal :point_down:
+```bash
+echo 'cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs && chmod +x gnome-prefs && ./gnome-prefs' | bash
 ```
-cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs && chmod +x gnome-prefs && ./gnome-prefs
-```
-
-## Vim
-[Vim Notes...](vimNotes.md)
 
 ## Extra goodies
 
