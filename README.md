@@ -11,11 +11,11 @@ Download and run [gnome-prefs](https://github.com/paulondc/prefs/blob/master/gno
 echo 'cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc/prefs/master/gnome-prefs && chmod +x gnome-prefs && ./gnome-prefs' | bash
 ```
 
-## Vim
-[Vim Notes...](vimNotes.md)
-
 ## Terminal
 [Terminal Notes...](terminalNotes.md)
+
+## Vim
+[Vim Notes...](vimNotes.md)
 
 ## Git
 [Git Notes...](gitNotes.md)
