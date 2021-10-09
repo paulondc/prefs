@@ -1,9 +1,9 @@
-#### Install diff/history tools:
+## Install diff/history tools:
 ```
 sudo apt-get install kdiff3 gitk
 ```
 
-#### Git config defaults (`~/.gitconfig`):
+## Git config defaults (`~/.gitconfig`):
 ```
 [credential]
   helper = cache --timeout=36000000
