@@ -19,6 +19,16 @@ echo 'cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc
 
 ## Extra goodies
 
+#### Install debuggers:
+```
+sudo apt-get install lldb gdb
+```
+
+#### Install diff/history tools:
+```
+sudo apt-get install kdiff3 gitk
+```
+
 #### Git config defaults (`~/.gitconfig`):
 ```
 [credential]
