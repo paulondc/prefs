@@ -44,6 +44,11 @@ cargo +nightly install racer
 rustup component add rust-src
 ```
 
+#### Install debuggers:
+```
+sudo apt-get install lldb gdb
+```
+
 #### Install system requirements for pgsql.vim:
 ```
 sudo apt install postgresql postgresql-contrib
