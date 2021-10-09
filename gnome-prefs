@@ -6,7 +6,7 @@ set -e
 #               .#####.   .#########.  https://github.com/paulondc/prefs
 #         .::. .#######. .##########.
 #       .#####..######. .#########:    This script was first created to facilitate the process of
-#   ... .#####. .####.  .########.     sharing my gnome preferences with family and friends.
+#   ... .#####. .####.  .########.     sharing my desktop preferences with family and friends.
 #  .####..####.  ''''    .####:.
 #  .####: '''' ......:::::.:::         Hotkeys:
 #   .###: ...:###############:.        <CTRL> + <ALT> + <T>          = launch terminal
@@ -87,8 +87,8 @@ fi
 # Apply theming for Qt applications.
 #
 # This is necessary to provide a nice integration between "qt/kde apps" and gnome. Otherwise,
-# qt apps may look completely different from gtk ones. For this process kvantum is used to
-# manage the theming on qt side.
+# qt apps may look completely different from gtk ones. Using kvantum to manage the
+# theming on qt side.
 #
 # $1 - Name of the kvantum style.
 #
@@ -403,10 +403,10 @@ applyGnomeExtensions () {
         return
     fi
 
-    # Enabling extensions, only after restarting gnome-shell the new extensions are visible therefore,
-    # only creating a trigger to activate them in the next login session. This is necessary because currently
-    # there is no safe way to restart gnome-shell when running on wayland (on x11 it would not be a problem
-    # but, keeping a simple implementation that works for both display servers)
+    # Enabling extensions, only after restarting gnome-shell the new extensions will be visible. Therefore,
+    # creating a trigger to activate them in the next login session. This is necessary because currently
+    # there is no safe way to restart gnome-shell when running on wayland (despite that on x11 it would
+    # not be a problem. However, keeping a simple implementation that works on both display servers)
     local prefixCommand="echo -e 'Please wait...'; sleep 3"
     local disableAllExtensionsCmd='for ext in $(gnome-extensions list); do gnome-extensions disable $ext; done'
     local gnomePrefsTrigger="$HOME/.config/autostart/gnomePrefsTrigger.desktop"
