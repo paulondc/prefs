@@ -3,7 +3,7 @@
 ## Linux
 [Debian Notes...](debianNotes.md)
 
-## Vim
+## Text Editor
 [Vim Notes...](vimNotes.md)
 
 ## Desktop
