@@ -34,16 +34,6 @@ map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
 ```
 
-#### Install debuggers:
-```
-sudo apt-get install lldb gdb
-```
-
-#### Install diff/history tools:
-```
-sudo apt-get install kdiff3 gitk
-```
-
 ####  Install font JetBrains Mono (`~/.local/share/fonts`):
 ```
 https://www.jetbrains.com/lp/mono/#design
