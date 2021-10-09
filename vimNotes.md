@@ -3,13 +3,17 @@
   <img src="data/screenshot.png?v=1"/>
 </p>
 
+#### Install [Neovim](https://neovim.io):
+```
+sudo apt-get install neovim
+```
+
 #### Update config (`~/.config/nvim/init.vim`)
 
 Download [init.vim](https://raw.githubusercontent.com/paulondc/prefs/master/init.vim). You can get it by simply running the line bellow on the terminal :point_down:
 ```bash
 echo 'mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc/prefs/master/init.vim -O ~/.config/nvim/init.vim' | bash
 ```
-
 
 ### Requirements
 
@@ -48,11 +52,6 @@ sudo apt install postgresql postgresql-contrib
 Also, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on the system:
 ```
 sudo apt-get install libpq-dev libsqlite3-dev
-```
-
-#### Install [Neovim](https://neovim.io):
-```
-sudo apt-get install neovim
 ```
 
 #### Install [vim-plug](https://github.com/junegunn/vim-plug):
