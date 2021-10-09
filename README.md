@@ -20,13 +20,5 @@ echo 'cd $(mktemp -d) && wget --quiet https://raw.githubusercontent.com/paulondc
 ## Git
 [Git Notes...](gitNotes.md)
 
-
-## Extra goodies
-
-#### Install debuggers:
-```
-sudo apt-get install lldb gdb
-```
-
 ## Licence
 prefs is free software; you can redistribute it and/or modify it under the terms of the MIT License
