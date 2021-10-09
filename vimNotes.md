@@ -6,8 +6,8 @@
 #### Update config (`~/.config/nvim/init.vim`)
 
 Download [init.vim](https://raw.githubusercontent.com/paulondc/prefs/master/init.vim). You can get it by simply running the line bellow on the terminal :point_down:
-```
-mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc/prefs/master/init.vim -O ~/.config/nvim/init.vim
+```bash
+echo 'mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc/prefs/master/init.vim -O ~/.config/nvim/init.vim' | bash
 ```
 
 
