@@ -58,6 +58,7 @@ GRUB_DISABLE_RECOVERY=true
 
 #### Reload the grub with the changes above
 ```
+apt install grub2-common
 update-grub
 ```
 
