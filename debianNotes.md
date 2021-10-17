@@ -6,13 +6,14 @@ The instructions below were based on debian's default installation options
 
 ## Post installation
 ### Add my user to the sudoers list (if needed)
-> Requires a restart
 ```
 /sbin/usermod -aG sudo <user>
+
+# reboot after that...
 ```
 
-### Edit sources list (skip this if not running on DebianTesting)
-> Running debian on testing: https://wiki.debian.org/DebianTesting
+### Edit sources list
+> Adding contrib and non-free packages
 
 Replace the whole contents of the file `/etc/apt/sources.list` with:
 ```
@@ -26,9 +27,13 @@ deb-src https://deb.debian.org/debian-security testing-security main contrib non
 deb https://deb.debian.org/debian/ testing-updates main contrib non-free
 deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
 ```
-Ps: This also includes contrib and non-free packages
 
-#### Update debian to get into DebianTesting
+To maintain Debian on stable replace all instances of `testing` for the release code name, for instance `bullseye`. The current code name can be queried by running the command below. Otherwise, debian will point to [testing](https://wiki.debian.org/DebianTesting):
+```bash
+lsb_release -cs
+```
+
+#### Update & upgrade debian
 ```
 apt update && apt dist-upgrade
 ```
@@ -59,7 +64,7 @@ GRUB_DISABLE_RECOVERY=true
 #### Reload the grub with the changes above
 ```
 apt install grub2-common
-update-grub
+sudo update-grub
 ```
 
 ### Install nvidia-driver (if needed)
