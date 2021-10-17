@@ -48,7 +48,7 @@ sudo apt-get install fish
 Set it as default shell:
 ```bash
 # setting fish as default shell for my user (reboot after that)
-chsh -s /bin/fish
+chsh -s /usr/bin/fish
 ```
 
 Fish defaults (`~/.config/fish/config.fish`):
