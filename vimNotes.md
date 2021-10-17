@@ -5,7 +5,7 @@
 
 #### Install [Neovim](https://neovim.io):
 ```
-sudo apt-get install neovim
+sudo apt install neovim
 ```
 
 #### Update config (`~/.config/nvim/init.vim`)
@@ -19,19 +19,19 @@ echo 'mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc
 
 #### Install [Powerline fonts](https://github.com/powerline/fonts):
 ```
-sudo apt-get install fonts-powerline
+sudo apt install fonts-powerline
 ```
 
 #### Install system requirements for [Coc](https://github.com/neoclide/coc.nvim) (autocomplete support in vim):
 ```bash
-# (python) make sure nodejs 12+ is always available in the PATH when running vim (~/.bashrc)
-export PATH="<SOMEWHERE>/node-<VER>-linux-x64/bin:$PATH"
+# (python) require nodejs 12+
+sudo apt install nodejs
 
-# (c/c++) clangd language server:
-sudo apt-get install clangd 
+# (c/c++) clangd language server
+sudo apt install clangd 
 
 # cmake:
-sudo apt-get install cmake
+sudo apt install cmake
 
 # install rust:
 # https://www.rust-lang.org/tools/install
@@ -56,7 +56,7 @@ sudo apt install postgresql postgresql-contrib
 
 Also, it might be handy to have `libpg-dev` and `libsqlite3-dev` installed on the system:
 ```
-sudo apt-get install libpq-dev libsqlite3-dev
+sudo apt install libpq-dev libsqlite3-dev
 ```
 
 #### Install [vim-plug](https://github.com/junegunn/vim-plug):
