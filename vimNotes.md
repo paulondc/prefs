@@ -30,17 +30,17 @@ sudo apt install nodejs
 # (c/c++) clangd language server
 sudo apt install clangd 
 
-# cmake:
+# cmake
 sudo apt install cmake
 
-# install rust:
+# install rust
 # https://www.rust-lang.org/tools/install
 rustup default nightly
 
-# (rust) install racer to the system:
+# (rust) install racer to the system
 cargo +nightly install racer
 
-# (rust) add rust source code to the system:
+# (rust) add rust source code to the system
 rustup component add rust-src
 ```
 
