@@ -1,3 +1,8 @@
+####  Install font JetBrains Mono (`~/.local/share/fonts`):
+```
+https://www.jetbrains.com/lp/mono/#design
+```
+
 ####  Install [Kitty](https://sw.kovidgoyal.net/kitty):
 ```
 https://github.com/kovidgoyal/kitty
@@ -32,11 +37,6 @@ active_tab_background #eee
 
 map shift+enter send_text all \x1b[13;2u
 map ctrl+enter send_text all \x1b[13;5u
-```
-
-####  Install font JetBrains Mono (`~/.local/share/fonts`):
-```
-https://www.jetbrains.com/lp/mono/#design
 ```
 
 #### Shell option A: [Fish](https://fishshell.com) (recommended)
