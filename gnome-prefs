@@ -26,6 +26,7 @@ set -e
 
 __GNOME_MIN_VER="3.36"
 __REQUIRED_APPS="kitty rofi nautilus gnome-terminal gnome-shell gedit wget git sassc msgfmt bc meson jq kvantummanager"
+__REQUIRED_PACKAGES=""
 __GNOME_CURRENT_VER=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d '.' -f 1,2)
 __CLI_USAGE="$(basename "$0") [-h] -- Gnome prefs.
 
@@ -67,7 +68,13 @@ CONFIG_HOTKEY_LAUNCH_FILE_MANAGER="${CONFIG_HOTKEY_LAUNCH_FILE_MANAGER:-<Super>e
 CONFIG_DOCK_LOCATION="${CONFIG_DOCK_LOCATION:-BOTTOM}"
 if [[ -z "$CONFIG_GNOME_EXTENSIONS" ]]; then
     CONFIG_GNOME_EXTENSIONS="dash-to-dock"
-    CONFIG_GNOME_EXTENSIONS+=" appindicatorsupport"
+    # on debian based distros "appindicatorsupport" is released
+    # as "ubuntu-appindicators"...
+    if apt --version >/dev/null 2>&1; then
+        CONFIG_GNOME_EXTENSIONS+=" ubuntu-appindicators"
+    else
+        CONFIG_GNOME_EXTENSIONS+=" appindicatorsupport"
+    fi
 fi
 
 # Wallpapers config
@@ -82,6 +89,14 @@ if [[ -z "$CONFIG_URL_WALLPAPERS" ]]; then
     CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/49791692896_27301dc497_o_d.jpg"
     CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/50207042001_b58bd077a8_o_d.jpg"
     CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/50207088591_2a2beb9b46_o_d.jpg"
+fi
+
+# The gnome extensions and the icon theme is provided by the aptitude package manager on debian
+# (otherwise, they will be installed under the user)
+if apt --version >/dev/null 2>&1; then
+    __REQUIRED_PACKAGES+=" gnome-shell-extension-dashtodock"
+    __REQUIRED_PACKAGES+=" gnome-shell-extension-appindicator"
+    __REQUIRED_PACKAGES+=" papirus-icon-theme"
 fi
 
 # Apply theming for Qt applications.
@@ -358,12 +373,9 @@ applyGnomeExtensions () {
         fi
 
         local extensionFullName=$(gnome-extensions list | grep $extensionName@)
-        if [[ ! -z "$extensionFullName" ]]; then
-        
-            # in case the extension is installed under the user lets reinstall them (working as update)
-            if [[ ! -d "$HOME/.local/share/gnome-shell/extensions/$extensionFullName" && "$downloadMissing" == "1" ]]; then
-                continue
-            fi
+        # if the extension is already installed at system level lets skipt it
+        if [[ ! -z "$extensionFullName" && -d "/usr/share/gnome-shell/extensions/$extensionFullName" ]]; then
+            continue
         fi
 
         if [[ "$downloadMissing" == "1" ]]; then
@@ -462,14 +474,16 @@ applyUrlWallpapers () {
 #
 # This function checks for system requirements, such as packages and gnome version.
 #
-# $@ - required apps/packages separated by space.
+# $1 - required apps separated by space
+# $2 - required packages separated by space
 #
 # Example:
-#   checkRequirements "packageA" "packageB"
+#   checkRequirements "appA appB" "packageA packageB"
 #
 # Returns nothing.
 checkRequirements () {
-    local requiredApps="$@"
+    local requiredApps="$1"
+    local requiredPackages="$2"
 
     # checking user level (don't run this as root)
     if [[ ! $EUID -ne 0 ]]; then
@@ -514,8 +528,23 @@ checkRequirements () {
         fi
     done
 
+    for requirePackage in $requiredPackages; do
+        # checking package on debian
+        if apt --version >/dev/null 2>&1; then
+            if [[ $(dpkg-query -W -f'${Status}' "$requirePackage" 2>&1 | grep -c "ok installed") == "0" ]]; then
+                missingDependencies+=" $requirePackage"
+            fi
+        # TODO: add support for arch and readhat based distros
+        else
+            >&2 echo -e "Error, checking for installed packages is not supported on current system"
+            exit 1
+        fi
+    done
+
     if ! [[ -z "$missingDependencies" ]]; then
-        >&2 echo -e "Error, missing required packages on the system (please install them):\e[1m$missingDependencies\e[0m"
+        local missingMessage="\e[1mError, missing packages. Please install the packages below and try again 👇:\e[0m"
+        missingMessage+="\n$(echo $missingDependencies | xargs)\n"
+        >&2 echo -e "$missingMessage"
         exit 1
     fi
 }
@@ -643,8 +672,8 @@ __runCli () {
         esac
     done
 
-    # making sure the system has all the dependencies
-    checkRequirements "$__REQUIRED_APPS"
+    # making sure the system has all the dependencies installed
+    checkRequirements "$__REQUIRED_APPS" "$__REQUIRED_PACKAGES"
 
     # applying changes
     if [[ "$runThemes" == "1" ]]; then
