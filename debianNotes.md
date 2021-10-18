@@ -90,3 +90,7 @@ apt install steam
 ```
 apt install nvidia-driver-libs:i386
 ```
+
+## Setup Desktop
+Run the gnome-prefs script (found on this repo):
+https://github.com/paulondc/prefs/blob/master/desktopNotes.md
