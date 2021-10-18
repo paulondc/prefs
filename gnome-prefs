@@ -25,7 +25,7 @@ set -e
 #                  ''''
 
 __GNOME_MIN_VER="3.36"
-__REQUIRED_APPS="rofi nautilus gnome-terminal gnome-shell gedit wget git sassc msgfmt bc meson jq kvantummanager"
+__REQUIRED_APPS="kitty rofi nautilus gnome-terminal gnome-shell gedit wget git sassc msgfmt bc meson jq kvantummanager"
 __GNOME_CURRENT_VER=$(gnome-shell --version | cut -d ' ' -f 3 | cut -d '.' -f 1,2)
 __CLI_USAGE="$(basename "$0") [-h] -- Gnome prefs.
 
@@ -313,7 +313,7 @@ applyGnomeHotkeys () {
     # Hotkey: ctrl + alt + t = launch terminal
     [$keybindings/custom100]
     binding='$launchTerminal'
-    command='gnome-terminal'
+    command='kitty'
     name='terminal'
 
     # Hotkey: super + space bar = launch launcher/window switcher (rofi)
