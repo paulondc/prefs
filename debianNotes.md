@@ -28,7 +28,7 @@ deb https://deb.debian.org/debian/ testing-updates main contrib non-free
 deb-src https://deb.debian.org/debian/ testing-updates main contrib non-free
 ```
 
-To maintain Debian on stable replace all instances of `testing` for the release code name, for instance `bullseye`. The current code name can be queried by running the command below. Otherwise, debian will point to [testing](https://wiki.debian.org/DebianTesting):
+To maintain Debian on stable (recommended) replace all instances of `testing` for the release code name, for instance `bullseye`. The current code name can be queried by running the command below. Otherwise, debian will point to [testing](https://wiki.debian.org/DebianTesting):
 ```bash
 lsb_release -cs
 ```
