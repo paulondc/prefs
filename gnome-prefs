@@ -360,7 +360,7 @@ applyGnomeExtensions () {
         local extensionFullName=$(gnome-extensions list | grep $extensionName@)
         if [[ ! -z "$extensionFullName" ]]; then
         
-            # in case the extension is installed lets reinstall them (working as update)
+            # in case the extension is installed under the user lets reinstall them (working as update)
             if [[ ! -d "$HOME/.local/share/gnome-shell/extensions/$extensionFullName" && "$downloadMissing" == "1" ]]; then
                 continue
             fi
