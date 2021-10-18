@@ -92,5 +92,4 @@ apt install nvidia-driver-libs:i386
 ```
 
 ## Setup Desktop
-Run the gnome-prefs script (found on this repo):
-https://github.com/paulondc/prefs/blob/master/desktopNotes.md
+Run the [gnome-prefs script](https://github.com/paulondc/prefs/blob/master/desktopNotes.md) (found on this repo)
