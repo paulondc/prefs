@@ -1,4 +1,5 @@
 ####  Install font JetBrains Mono (`~/.local/share/fonts`):
+> Only the ttf ones are needed
 ```
 https://www.jetbrains.com/lp/mono/#design
 ```
