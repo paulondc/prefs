@@ -24,8 +24,8 @@ sudo apt install fonts-powerline
 
 #### Install system requirements for [Coc](https://github.com/neoclide/coc.nvim) (autocomplete support in vim):
 ```bash
-# (python) require nodejs 12+
-sudo apt install nodejs
+# (python/coc) requires nodejs 12+
+sudo apt install nodejs npm
 
 # (c/c++) clangd language server
 sudo apt install clangd 
