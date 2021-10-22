@@ -91,7 +91,7 @@ if [[ -z "$CONFIG_URL_WALLPAPERS" ]]; then
     CONFIG_URL_WALLPAPERS+=" https://live.staticflickr.com/1/50207088591_2a2beb9b46_o_d.jpg"
 fi
 
-# The gnome extensions and the icon theme is provided by the aptitude package manager on debian
+# The gnome extensions and the icon theme are provided by the aptitude package manager on debian
 # (otherwise, they will be installed under the user)
 if apt --version >/dev/null 2>&1; then
     __REQUIRED_PACKAGES+=" gnome-shell-extension-dashtodock"
