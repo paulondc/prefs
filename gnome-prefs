@@ -370,6 +370,7 @@ applyGnomeExtensions () {
             enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position \\\"'$dockLocation'\\\";"
             enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/force-straight-corner false;"
             enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true;"
+            enableExtensionsCmd+="dconf write /org/gnome/shell/extensions/dash-to-dock/show-apps-at-top true;"
         fi
 
         local extensionFullName=$(gnome-extensions list | grep $extensionName@)
