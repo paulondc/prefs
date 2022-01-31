@@ -71,9 +71,10 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 
 #### Add json configuration for [Coc](https://github.com/neoclide/coc.nvim) (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
 
-This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column)
+This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column). Also, increasing the maximum number of suggestions shown by the auto-complete popup (default 50).
 ```json
 {
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "maxCompleteItemCount": 10000
 }
 ```
