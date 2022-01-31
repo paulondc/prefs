@@ -75,6 +75,6 @@ This configuration allows errors to be reported directly in the whole line of th
 ```json
 {
   "diagnostic.checkCurrentLine": true,
-  "maxCompleteItemCount": 10000
+  "suggest.maxCompleteItemCount": 10000
 }
 ```
