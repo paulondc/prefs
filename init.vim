@@ -291,3 +291,11 @@ nmap <silent>rn <Plug>(coc-rename)
 
 " disabling the pairs for < in coc
 autocmd FileType * let b:coc_pairs_disabled = ['<']
+
+" automatically detecting and converting CRLF to LF
+function WatchForCRLF()
+  if &fileformat ==# 'dos' && confirm('',"CRLF (dos) line ending detected. Do you want to switch to LF (unix)? (&Yes\n&No)",1)==1
+    set fileformat=unix
+  endif
+endfunction
+au BufReadPost,BufNewFile *.* call WatchForCRLF()
