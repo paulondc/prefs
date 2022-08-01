@@ -298,4 +298,4 @@ function WatchForCRLF()
     set fileformat=unix
   endif
 endfunction
-au BufReadPost,BufNewFile *.* call WatchForCRLF()
+au BufReadPost,BufNewFile * call WatchForCRLF()
