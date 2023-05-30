@@ -17,11 +17,6 @@ echo 'mkdir -p ~/.config/nvim && wget https://raw.githubusercontent.com/paulondc
 
 ### Requirements
 
-#### Install [Powerline fonts](https://github.com/powerline/fonts):
-```
-sudo apt install fonts-powerline
-```
-
 #### Install system requirements for [Coc](https://github.com/neoclide/coc.nvim) (autocomplete support in vim):
 ```bash
 # (python/coc) requires nodejs 12+
