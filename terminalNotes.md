@@ -2,6 +2,9 @@
 > Only the ttf ones are needed
 ```
 https://www.jetbrains.com/lp/mono/#design
+
+# install font-manager to help to install all variations
+sudo apt install font-manager
 ```
 
 ####  Install [Kitty](https://sw.kovidgoyal.net/kitty):
