@@ -27,6 +27,10 @@ sudo apt install fonts-powerline
 # (python/coc) requires nodejs 12+
 sudo apt install nodejs npm
 
+# on ubuntu install "n" that manages node versions then change to the latest lts
+sudo npm install -g n
+sudo n lts
+
 # (c/c++) clangd language server
 sudo apt install clangd 
 
