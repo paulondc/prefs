@@ -36,9 +36,6 @@ sudo apt install cmake
 # https://www.rust-lang.org/tools/install
 rustup default nightly
 
-# (rust) install racer to the system
-cargo +nightly install racer
-
 # (rust) add rust source code to the system
 rustup component add rust-src
 ```
