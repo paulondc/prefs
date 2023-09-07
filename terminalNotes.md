@@ -99,4 +99,7 @@ Inputrc defaults (`~/.inputrc`)
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+
+# case-insensitive auto-complete
+set completion-ignore-case On
 ```
