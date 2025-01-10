@@ -75,6 +75,14 @@ end
 #### Shell option B: Bash
 Bashrc defaults (`~/.bashrc`)
 ```bash
+
+# utility to convert webm 2 gif
+function webm2gif() {
+    ffmpeg -y -i "$1" -vf palettegen _tmp_palette.png
+    ffmpeg -y -i "$1" -i _tmp_palette.png -filter_complex paletteuse -r 10  "${1%.webm}.gif"
+    rm _tmp_palette.png
+}
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=200000
