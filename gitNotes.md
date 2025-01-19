@@ -3,6 +3,11 @@
 sudo apt-get install kdiff3 gitk
 ```
 
+For gitk on Arch
+```
+sudo pacman -S git tk
+```
+
 #### Git config defaults (`~/.gitconfig`):
 ```
 [credential]
