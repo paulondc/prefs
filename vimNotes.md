@@ -8,6 +8,11 @@
 sudo apt install neovim
 ```
 
+#### Install clipboard provider (arch linux)
+```
+sudo pacman -S xclip
+```
+
 #### Update config (`~/.config/nvim/init.vim`)
 
 Download [init.vim](https://github.com/paulondc/prefs/blob/master/init.vim). You can get it by simply running the line bellow on the terminal :point_down:
