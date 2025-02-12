@@ -72,10 +72,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 
 #### Add json configuration for [Coc](https://github.com/neoclide/coc.nvim) (`~/.config/nvim/coc-settings.json`) or `CocConfig` command inside vim:
 
-This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column). Also, increasing the maximum number of suggestions shown by the auto-complete popup (default 50).
+This configuration allows errors to be reported directly in the whole line of the error (instead of having to browse up to character column). Increasing the maximum number of suggestions shown by the auto-complete popup (default 50). Also, disabling the type hints in python since it polutes the whole editor by mixing actual code with non code for the type hints.
 ```json
 {
   "diagnostic.checkCurrentLine": true,
-  "suggest.maxCompleteItemCount": 10000
+  "suggest.maxCompleteItemCount": 10000,
+  "inlayHint.enable": false
 }
 ```
