@@ -21,3 +21,9 @@ sudo pacman -S git tk
 [difftool]
   prompt = false
 ```
+
+Set the current user info:
+```bash
+git config --global user.name "Paulo Nogueira"
+git config --global user.email "paulondc@gmail.com"
+```
