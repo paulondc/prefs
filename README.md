@@ -2,6 +2,7 @@
 
 ## Linux
 [Debian Notes...](debianNotes.md)
+[Arch Notes...](archNotes.md)
 
 ## Desktop
 [Desktop Notes...](desktopNotes.md)
